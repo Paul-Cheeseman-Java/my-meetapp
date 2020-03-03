@@ -1,0 +1,128 @@
+/*
+	To override some of the main themes css with my own preferences
+*/
+
+.generalText{
+	color: #ffffff;
+}
+
+.registerSuccess{
+	color: #ffffff;
+}
+
+.formErrorMsg {
+	color: #ff0000;
+}
+
+#companyDropdownList{
+	border-radius: 4px;
+}
+
+.add-button {
+	background-color: transparent;
+	border-top: none;
+}
+
+#intro-none-homepage {
+    width: 100%;
+    position: relative;
+    background: url(../img/intro-bg.png) center bottom no-repeat;
+    background-size: cover;
+    padding: 125px 0 120px 0;
+}
+
+label {
+	color: #FFFFFF;
+	font-size: 1.25rem;
+}
+
+formcontrol{
+	font-family: "Montserrat", sans-serif;
+}
+
+#contact {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    padding: 15px 0px;
+    overflow: hidden;
+}
+
+/* Removing the 'back to top' chevron */
+.back-to-top {
+	height: 0px;
+	width: 0px
+}
+
+#meeting-stats {
+	color: #FFFFFF;
+	background: #004a99;
+}
+
+#meeting-stats .counters {
+    padding-top: 10px;
+}
+
+#meeting-stats .counters span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    display: block;
+    color: #fff;
+}
+
+
+#meeting-stats .section-header h3 {
+	padding: 20px 0 0 0;
+	margin: 20px 0 0 0;
+    color: #FFFFFF;
+}
+
+
+#meeting-stats .counters p {
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #cce5ff;
+}
+
+.title {
+	text-align: center;
+	text-decoration: underline;
+	color: #FFFFFF;
+	font-size: 2.5rem;
+	font-family: "Montserrat", sans-serif;
+}
+
+
+#footer {
+    background-color: #FFFFFF
+}
+
+#footer .copyright {
+    color: #004289;
+}
+    
+#footer .credits {
+    color: #004289;
+}
+
+#footer .credits a {
+    color: #bfddfe;
+}
+
+
+th {
+	color: #004289;
+	background: #FFFFFF;
+	font-family: "Montserrat", sans-serif;
+}
+
+td {
+	color:rgba(255, 255, 255);
+	font-family: "Montserrat", sans-serif;
+	background-color:rgba(255, 255, 255, 0.2);
+}
+
+table {
+	margin-top: 10px;
+}

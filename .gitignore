@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+/target/
+=======
+# Eclipse
+.classpath
+.project
+.settings/
+
+#Ignore any comipled Java files
+*.class
+
+>>>>>>> refs/remotes/github/master
