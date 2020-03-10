@@ -41,8 +41,6 @@ public class ContactController {
 	@RequestMapping(value = "/newContact", method = RequestMethod.GET)
 	public String newContact(Model model, Principal principal) {
 		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
-
-		
 		model.addAttribute("companiesList", currentCompaniesList);
 		Contact newContact = new Contact();
 		model.addAttribute("contact", newContact);

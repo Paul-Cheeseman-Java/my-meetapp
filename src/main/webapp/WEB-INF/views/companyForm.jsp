@@ -12,8 +12,6 @@
   		<div class="title">
   			${title}
   		</div>
-
-
 			<c:forEach items="${companyList}" var="company">
 				<tr>
 					<td>${company.name}</td>
@@ -24,15 +22,13 @@
 					</td>
 				</tr>
 			</c:forEach>
- 		
-  		
     	<div class="form">
         	<div id="errormessage"></div>
             <form:form method="post" role="form" commandName="company">
             	<div class="form-row">
                 	<div class="form-group col-md-6">
                     	<form:label path="name" for="name">Name:</form:label>
-                    	<form:input path="name" type="text" name="name" class="form-control" id="name" placeholder="Company Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" maxlength="15"/>
+                    	<form:input path="name" type="text" name="name" class="form-control" id="name" placeholder="Company Name" pattern=".{4,25}" required="required" title="4 to 25 characters"/>
                     	<div class="validation"></div>
                   	</div>
                 </div>

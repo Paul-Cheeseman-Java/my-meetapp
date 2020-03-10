@@ -20,25 +20,25 @@
             	<div class="form-row">
                 	<div class="form-group col-md-6">
                     	<form:label path="firstName" for="firstname">First Name:</form:label>
-                    	<form:input path="firstName" type="text" name="firstName" class="form-control" id="firstName" placeholder="Contacts First Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" maxlength="15"/>
+                    	<form:input path="firstName" type="text" name="firstName" class="form-control" id="firstName" placeholder="Contacts First Name"  pattern="[A-Za-z]{2,15}" required="required" title="2 to 15 letters"/>
                     	<form:errors path="firstName" class="formErrorMsg" />
                     	<div class="validation"></div>
                   	</div>
                   	<div class="form-group col-md-6">
                     	<form:label path="lastName" for="lastName">Last Name:</form:label>
-                    	<form:input path="lastName" type="text" name="lastName" class="form-control" id="lastName" placeholder="Contacts Last Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" maxlength="25" />
+                    	<form:input path="lastName" type="text" name="lastName" class="form-control" id="lastName" placeholder="Contacts Last Name"   pattern="[A-Za-z]{2,25}" required="required" title="2 to 25 letters" />
                 	    <div class="validation"></div>
                 	</div>
            		</div>
                 <div class="form-row">
                 	<div class="form-group col-md-6">
                 	    <form:label path="email" for="email">Email:</form:label>
-                    	<form:input path="email" type="email" class="form-control" name="email" id="email" placeholder="Contacts Email" data-rule="email" data-msg="Please enter a valid email" maxlength="30" />
+                    	<form:input path="email" type="email" class="form-control" name="email" id="email" placeholder="Contacts Email" required="required"/>
                     	<div class="validation"></div>
                 	</div>
                 	<div class="form-group col-md-6">
                 	    <form:label path="phone" for="phone">Phone:</form:label>
-                  		<form:input path="phone" type="text" class="form-control" name="phone" id="phone" placeholder="Contacts Phone No." data-rule="minlen:11" data-msg="Please enter at least 11 digits"  maxlength="15"/>
+                  		<form:input path="phone" type="text" class="form-control" name="phone" id="phone" placeholder="Contacts Phone No." pattern="[0-9]{11,11}" required="required" title="11 numbers"/>
                   		<div class="validation"></div>
                 	</div>
                 </div>

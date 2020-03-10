@@ -15,7 +15,7 @@
  			<form action="register" method="post">
        			<div class="form-group">
 					<label for="username">Username</label>
-   					<input type="text" id="username" name="username"/>
+   					<input type="text" id="username" name="username" pattern=".{4,20}" required="required" title="4 to 20 characters"/>
 	       			<c:if test="${error != null}">
     					<div class="formErrorMsg">
 	    					Username already taken
@@ -24,7 +24,7 @@
        			</div>
        			<div class="form-group">
             		<label for="lastName">Password:</label>
-   					<input type="password" id="password" name="password"/>
+   					<input type="password" id="password" name="password" pattern=".{4,20}" required title="4 to 20 characters"/>
        			</div>
 	    		<div class="text-center"><button class="btn btn-light" type="submit" >Register</button></div>
 	    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
