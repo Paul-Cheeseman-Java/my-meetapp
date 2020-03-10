@@ -1,6 +1,12 @@
 (function ($) {
   "use strict";
 
+  //Added Date time picker
+  $(function () {
+      $('#datetimepicker1').datetimepicker();
+  });
+  
+  
   // Preloader (if the #preloader div exists)
   $(window).on('load', function () {
     if ($('#preloader').length) {
