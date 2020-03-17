@@ -2,6 +2,7 @@ package com.meetapp.meetings.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.meetapp.contacts.model.Contact;
+import com.meetapp.meetings.model.Meeting;
 
 @Repository
 public class MeetingDAOImpl implements MeetingDAO {
@@ -31,61 +32,74 @@ public class MeetingDAOImpl implements MeetingDAO {
 	}
 
 	@Override
-	public void updateContact(Contact contact) {
-		String sql = "UPDATE contact SET first_name=?, last_name=?, email=?, company_id=?, phone=? WHERE id=?";
-		jdbcTemplate.update(sql, contact.getFirstName(), contact.getLastName(), contact.getEmail(), contact.getCompany(), contact.getPhone(), contact.getId());
+	public void updateMeeting(Meeting Meeting) {
+		//String sql = "UPDATE Meeting SET first_name=?, last_name=?, email=?, company_id=?, phone=? WHERE id=?";
+		//jdbcTemplate.update(sql, Meeting.getFirstName(), Meeting.getLastName(), Meeting.getEmail(), Meeting.getCompany(), Meeting.getPhone(), Meeting.getId());
 	}
 
-	@Override
-	public void insertContact(Contact contact, String username) {
-		String sql = "INSERT INTO contact (first_name, last_name, email, company_id, phone, username) VALUES (?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, contact.getFirstName(), contact.getLastName(), contact.getEmail(), contact.getCompany(), contact.getPhone(), username);
-	}
 	
 	@Override
-	public void deleteContact(int contactId) {
-		String sql = "DELETE FROM contact WHERE id=?";
-		jdbcTemplate.update(sql, contactId);
+	public void insertMeeting(Meeting meeting) {
+		String sql = "INSERT INTO Meeting (contact_id, company_id, meeting_type, notes, meeting_start, meeting_end) VALUES (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, 1, 1, 1, "Blah", meeting.getMeeting_start(), meeting.getMeeting_start());
+	}
+
+	
+	@Override
+	public void insertMeeting(Meeting Meeting, String username) {
+		//String sql = "INSERT INTO Meeting (first_name, last_name, email, company_id, phone, username) VALUES (?, ?, ?, ?, ?, ?)";
+		//jdbcTemplate.update(sql, Meeting.getFirstName(), Meeting.getLastName(), Meeting.getEmail(), Meeting.getCompany(), Meeting.getPhone(), username);
+	}
+
+	
+	
+	@Override
+	public void deleteMeeting(int MeetingId) {
+		//String sql = "DELETE FROM Meeting WHERE id=?";
+		//jdbcTemplate.update(sql, MeetingId);
 	}
 
 	@Override
-	public List<Contact> listContacts(String username) {
-		String sql = "SELECT * FROM contact WHERE username = '" + username + "'";
-		List<Contact> listContact = jdbcTemplate.query(sql, new RowMapper<Contact>() {
+	public List<Meeting> listMeetings(String username) {
+		/*
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'";
+		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
 
 			@Override
-			public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Contact aContact = new Contact();
-				aContact.setId(rs.getInt("id"));
-				aContact.setFirstName(rs.getString("first_name"));				
-				aContact.setLastName(rs.getString("last_name"));
-				aContact.setEmail(rs.getString("email"));
-				aContact.setCompany(rs.getInt("company_id"));
-				aContact.setPhone(rs.getString("phone"));
-				return aContact;
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting aMeeting = new Meeting();
+				aMeeting.setId(rs.getInt("id"));
+				aMeeting.setFirstName(rs.getString("first_name"));				
+				aMeeting.setLastName(rs.getString("last_name"));
+				aMeeting.setEmail(rs.getString("email"));
+				aMeeting.setCompany(rs.getInt("company_id"));
+				aMeeting.setPhone(rs.getString("phone"));
+				return aMeeting;
 			}
 		});
-		Collections.sort(listContact);
-		return listContact;
+		Collections.sort(listMeeting);
+		return listMeeting;
+		*/
+		List<Meeting> dummy = new ArrayList<Meeting>();
+		return dummy;
 	}
 
 	
 	@Override
-	public Contact getContact(int contactId) {
-		String sql = "SELECT * FROM contact WHERE id=" + contactId;
-		return jdbcTemplate.query(sql, new ResultSetExtractor<Contact>() {
+	public Meeting getMeeting(int meetingId) {
+		String sql = "SELECT * FROM Meeting WHERE id=" + meetingId;
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Meeting>() {
 			@Override
-			public Contact extractData(ResultSet rs) throws SQLException,
+			public Meeting extractData(ResultSet rs) throws SQLException,
 					DataAccessException {
 				if (rs.next()) {
-					Contact contact = new Contact();
-					contact.setId(rs.getInt("id"));
-					contact.setFirstName(rs.getString("first_name"));
-					contact.setLastName(rs.getString("last_name"));					
-					contact.setEmail(rs.getString("email"));
-					contact.setCompany(rs.getInt("company_id"));
-					contact.setPhone(rs.getString("phone"));
-					return contact;
+					Meeting Meeting = new Meeting();
+					Meeting.setId(rs.getInt("id"));
+					Meeting.setContact_id(rs.getInt("contact_id"));
+					Meeting.setCompany_id(rs.getInt("company_id"));					
+					Meeting.setMeeting_type(rs.getInt("meeting_type"));
+					Meeting.joinDateTimeMeetingStart(rs.getDate("meeting_start"), rs.getTime("meeting_start"));
+					return Meeting;
 				}
 				return null;
 			}

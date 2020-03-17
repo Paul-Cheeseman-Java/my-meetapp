@@ -2,18 +2,21 @@ package com.meetapp.meetings.dao;
 
 import java.util.List;
 
-import com.meetapp.contacts.model.Contact;
+import com.meetapp.meetings.model.Meeting;
 
 
 public interface MeetingDAO {
 	
-	public void updateContact(Contact contact);
+	public void updateMeeting(Meeting Meeting);
 	
-	public void insertContact(Contact contact, String username);
+	//Testing version of function
+	public void insertMeeting(Meeting Meeting);
 	
-	public void deleteContact(int contactId);
+	public void insertMeeting(Meeting Meeting, String username);
 	
-	public Contact getContact(int contactId);
+	public void deleteMeeting(int MeetingId);
 	
-	public List<Contact> listContacts(String username);
+	public Meeting getMeeting(int MeetingId);
+	
+	public List<Meeting> listMeetings(String username);
 }

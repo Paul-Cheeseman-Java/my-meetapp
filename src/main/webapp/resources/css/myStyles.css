@@ -125,7 +125,7 @@ formcontrol{
 
 th {
 	color: #004289;
-	background: #FFFFFF;
+	background: FFFFFF;
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -140,6 +140,7 @@ table {
 }
 
 
+/*
 /*@preserve
  * Tempus Dominus Bootstrap4 v5.0.1 (https://tempusdominus.github.io/bootstrap-4/)
  * Copyright 2016-2018 Jonathan Peterson
@@ -157,12 +158,13 @@ table {
   border: 0; }
 
 .bootstrap-datetimepicker-widget {
-  list-style: none; }
+    background-color:  #99c2ff;						/* The background of whole menu*/
+    font-size: 0.85em;								/* The font-size */
+	list-style: none; }
+
   .bootstrap-datetimepicker-widget.dropdown-menu {
     display: block;
     margin: 2px 0;
-    background-color:  #00ff00;						/* The background of whole menu*/
-    font-size: 0.85em;								/* The font-size */
     padding: 4px;
     width: 14rem; }
     @media (min-width: 576px) {
@@ -181,27 +183,27 @@ table {
     .bootstrap-datetimepicker-widget.dropdown-menu.bottom:before {
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
-      border-bottom: 7px solid #ccc;
-      border-bottom-color: rgba(0, 0, 0, 0.2);
+      border-bottom: 7px solid transparent;
+      border-bottom-color: transparent;
       top: -7px;
       left: 7px; }
     .bootstrap-datetimepicker-widget.dropdown-menu.bottom:after {
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-bottom: 6px solid white;
+      border-bottom: 6px solid transparent;
       top: -6px;
       left: 8px; }
     .bootstrap-datetimepicker-widget.dropdown-menu.top:before {
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
-      border-top: 7px solid #ccc;
-      border-top-color: rgba(0, 0, 0, 0.2);
+      border-top: 7px solid transparent;
+      border-top-color: transparent;
       bottom: -7px;
       left: 6px; }
     .bootstrap-datetimepicker-widget.dropdown-menu.top:after {
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-top: 6px solid white;
+      border-top: 6px solid transparent;
       bottom: -6px;
       left: 7px; }
     .bootstrap-datetimepicker-widget.dropdown-menu.float-right:before {
@@ -279,9 +281,10 @@ table {
       .bootstrap-datetimepicker-widget table th.next::after {
         content: "Next Month"; }
     .bootstrap-datetimepicker-widget table thead tr:first-child th {
-      cursor: pointer; }
+      cursor: pointer;
+      background: #99c2ff; }							/* Table rows for number dates */
       .bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
-        background: #ff0000; }
+        background: #6c757d; }							/* Hover background of month/year selection (+ arrows) */
     .bootstrap-datetimepicker-widget table td {
       height: 54px;
       line-height: 54px;
@@ -296,10 +299,10 @@ table {
         line-height: 20px;
         width: 20px; }
       .bootstrap-datetimepicker-widget table td.day:hover, .bootstrap-datetimepicker-widget table td.hour:hover, .bootstrap-datetimepicker-widget table td.minute:hover, .bootstrap-datetimepicker-widget table td.second:hover {
-        background: #e9ecef;
+		background: #6c757d;												/* The background to the number hover */
         cursor: pointer; }
       .bootstrap-datetimepicker-widget table td.old, .bootstrap-datetimepicker-widget table td.new {
-        color: #6c757d; }
+        color: 	#e6e6ff; }													/* Numbers not in that months range */
       .bootstrap-datetimepicker-widget table td.today {
         position: relative; }
         .bootstrap-datetimepicker-widget table td.today:before {
@@ -307,20 +310,18 @@ table {
           display: inline-block;
           border: solid transparent;
           border-width: 0 0 7px 7px;
-          border-bottom-color: #007bff;
-          border-top-color: rgba(0, 0, 0, 0.2);
           position: absolute;
           bottom: 4px;
           right: 4px; }
       .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
-        background-color: #007bff;
-        color: #fff;
+        background-color: #007bff;								/* Selected date */
+        color:  #fff;										/* Selected date */
         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
       .bootstrap-datetimepicker-widget table td.active.today:before {
-        border-bottom-color: #fff; }
+        border-bottom-color:  transparent; }							/* Triangle on active date */
       .bootstrap-datetimepicker-widget table td.disabled, .bootstrap-datetimepicker-widget table td.disabled:hover {
         background: none;
-        color: #6c757d;
+        color: #6c757d;											/* ????? */
         cursor: not-allowed; }
       .bootstrap-datetimepicker-widget table td span {
         display: inline-block;
@@ -331,16 +332,16 @@ table {
         cursor: pointer;
         border-radius: 0.25rem; }
         .bootstrap-datetimepicker-widget table td span:hover {
-          background: #e9ecef; }
+          background: #e9ecef; }								/* Background of selection panel, time/date sections */
         .bootstrap-datetimepicker-widget table td span.active {
-          background-color: #007bff;
+          background-color: #6c757d;								/* Time/Date general select background */
           color: #fff;
           text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
         .bootstrap-datetimepicker-widget table td span.old {
-          color: #6c757d; }
+          color: #6c757d; }										/*  ??????   */
         .bootstrap-datetimepicker-widget table td span.disabled, .bootstrap-datetimepicker-widget table td span.disabled:hover {
           background: none;
-          color: #6c757d;
+          color: #6c757d;										/* ?????? */
           cursor: not-allowed; }
   .bootstrap-datetimepicker-widget.usetwentyfour td.hour {
     height: 27px;

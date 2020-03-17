@@ -3,7 +3,9 @@
 
   //Added Date time picker
   $(function () {
-      $('#datetimepicker1').datetimepicker();
+      $('#datetimepicker1').datetimepicker({
+          format: 'DD/MM/YYYY HH:mm',
+      });
   });
   
   
