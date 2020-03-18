@@ -77,8 +77,6 @@ public class MeetingController {
 	@RequestMapping(value = "/newMeeting", method = RequestMethod.POST)
 	public ModelAndView submitContact(ModelAndView model, Meeting meeting, Principal principal)
 	{
-	
-		
 		
 		System.out.println("Submit: " + submitDateTime);
 		System.out.println("Now: " + LocalDateTime.now());
