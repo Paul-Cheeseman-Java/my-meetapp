@@ -82,6 +82,7 @@ public class MeetingController {
 		System.out.println("Now: " + LocalDateTime.now());
 		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
 			//Not perfect, as is form is left for a while then a past date can be put in, but the error window is small
+			//Do outside SPRING, just set a variable to flag and "If exist..."
 			System.out.println("In Past - reject!");
 		}
 

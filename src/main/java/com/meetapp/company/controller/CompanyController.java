@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,11 +62,21 @@ public class CompanyController {
 	
 	
 	@RequestMapping(value = "/newCompany", method = RequestMethod.POST)
-	public ModelAndView submitcompany(ModelAndView model, Company company, Principal principal) {
-		companyDAO.insertCompany(company, principal.getName());
-		return new ModelAndView("redirect:/companyList");
+	public ModelAndView submitcompany(ModelMap model, Company company, Principal principal) {
+
+		//If company names = companyNameExists = sorry, name taken, return to edit page (rather than list page)
+		if (companyDAO.getCompany(company.getName()) != null) {
+			model.addAttribute("duplicateCompany", true);
+			return new ModelAndView("redirect:/newCompany", model);
+
+		} else {
+			companyDAO.insertCompany(company, principal.getName());
+	        return new ModelAndView("redirect:/companyList");
+		}
 	}
 	
+	
+
 	
 	@RequestMapping(value = "/deleteCompany", method = RequestMethod.GET)
 	public ModelAndView deletecompany(HttpServletRequest request) {
@@ -91,7 +102,19 @@ public class CompanyController {
 	
 
 	@RequestMapping(value = "/editCompany", method = RequestMethod.POST)
-	public ModelAndView updatecompany(Model model, Company company) {
+	public ModelAndView updatecompany(HttpServletRequest request, Model model, Company company) {
+		//If company names = companyNameExists = sorry, name taken, return to edit page (rather than list page)
+
+		int companyId = Integer.parseInt(request.getParameter("id"));
+		String companyNameInDB = companyDAO.getCompany(companyId).getName();
+		String companyNameFromForm = company.getName();
+		
+		//company currentName
+		//if currentName == newName, do nothing
+		//if 
+
+		
+		
 		companyDAO.updateCompany(company);
 		return new ModelAndView("redirect:/companyList");
 	}

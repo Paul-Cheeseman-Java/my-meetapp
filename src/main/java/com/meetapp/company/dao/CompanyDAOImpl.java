@@ -152,4 +152,24 @@ public class CompanyDAOImpl implements CompanyDAO{
 		});
 	}
 	
+	
+	@Override
+	public Company getCompany(String companyName) {
+		String sql = "SELECT * FROM Company WHERE name='" + companyName +"'";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Company>() {
+			@Override
+			public Company extractData(ResultSet rs) throws SQLException,
+					DataAccessException {
+				if (rs.next()) {
+					Company Company = new Company();
+					Company.setId(rs.getInt("id"));
+					Company.setName(rs.getString("name"));
+					Company.setCompanyType(rs.getInt("company_type"));					
+					return Company;
+				}
+				return null;
+			}
+		});
+	}
+	
 }

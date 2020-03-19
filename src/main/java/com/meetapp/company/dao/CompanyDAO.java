@@ -19,6 +19,8 @@ public interface CompanyDAO {
 	
 	public Company getCompany(int companyId);
 	
+	public Company getCompany(String companyName);
+	
 	public List<CompanyType> listCompanyTypes();
 
 	public List<String> getCompaniesUsed(String username);
