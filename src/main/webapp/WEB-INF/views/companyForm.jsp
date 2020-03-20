@@ -28,9 +28,10 @@
                 	<div class="form-group col-md-6">
                     	<form:label path="name" for="name">Name:</form:label>
                     	<form:input path="name" type="text" name="name" class="form-control" id="name" placeholder="Company Name" pattern=".{4,25}" required="required" title="4 to 25 characters"/>
-						<c:if test="${param.duplicateCompany == true}">
-        					<div class="formErrorMsg"> That company was already registered</div>
+    					<c:if test="${duplicateCompany == true}">
+        					<div class="formErrorMsg"> That company is already registered</div>
     					</c:if>
+    					
                   	</div>
                 </div>
                 <div class="form-row">

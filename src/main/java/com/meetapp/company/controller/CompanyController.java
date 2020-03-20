@@ -63,20 +63,26 @@ public class CompanyController {
 	
 	@RequestMapping(value = "/newCompany", method = RequestMethod.POST)
 	public ModelAndView submitcompany(ModelMap model, Company company, Principal principal) {
-
-		//If company names = companyNameExists = sorry, name taken, return to edit page (rather than list page)
 		if (companyDAO.getCompany(company.getName()) != null) {
-			model.addAttribute("duplicateCompany", true);
-			return new ModelAndView("redirect:/newCompany", model);
-
+		    ModelAndView modelAndView = new ModelAndView("companyForm");
+			List<CompanyType> companyTypesList = companyDAO.listCompanyTypes();
+			modelAndView.addObject("companyTypesList", companyTypesList);
+			modelAndView.addObject("title", "Existing Company");
+			modelAndView.addObject("buttontext", "Update Company");
+		    modelAndView.addObject("company", company);
+		    modelAndView.addObject("duplicateCompany", true);
+			return modelAndView;
 		} else {
 			companyDAO.insertCompany(company, principal.getName());
-	        return new ModelAndView("redirect:/companyList");
+		    ModelAndView modelAndView = new ModelAndView("companyList");
+			List<Company> allcompanys = companyDAO.listCompaniesStrCompanyType(principal.getName());
+			List<String> getCompaniesUsed = companyDAO.getCompaniesUsed(principal.getName());
+			modelAndView.addObject("companyList", allcompanys);
+			modelAndView.addObject("companiesUsed", getCompaniesUsed);
+			return modelAndView;
 		}
 	}
 	
-	
-
 	
 	@RequestMapping(value = "/deleteCompany", method = RequestMethod.GET)
 	public ModelAndView deletecompany(HttpServletRequest request) {
@@ -90,7 +96,6 @@ public class CompanyController {
 	public String editcompany(HttpServletRequest request, Model model) {
 		int companyId = Integer.parseInt(request.getParameter("id"));
 		Company company = companyDAO.getCompany(companyId);
-		company.getCompanyTypeStr();
 		List<CompanyType> companiesTypesList = companyDAO.listCompanyTypes();
 		model.addAttribute("company", company);
 		model.addAttribute("companyTypesList", companiesTypesList);
@@ -102,21 +107,32 @@ public class CompanyController {
 	
 
 	@RequestMapping(value = "/editCompany", method = RequestMethod.POST)
-	public ModelAndView updatecompany(HttpServletRequest request, Model model, Company company) {
-		//If company names = companyNameExists = sorry, name taken, return to edit page (rather than list page)
+	public ModelAndView updatecompany(HttpServletRequest request, ModelMap model, Company company) {
 
 		int companyId = Integer.parseInt(request.getParameter("id"));
 		String companyNameInDB = companyDAO.getCompany(companyId).getName();
 		String companyNameFromForm = company.getName();
 		
-		//company currentName
-		//if currentName == newName, do nothing
-		//if 
+		System.out.println("companyNameInDB: " +companyNameInDB);
+		System.out.println("companyNameFromForm: " +companyNameFromForm);
+		System.out.println("Equal? " + companyNameInDB.equals(companyNameFromForm));
+		
+		// The name is being changed but the desired name is already in db
+		if (!companyNameInDB.equals(companyNameFromForm) && (companyDAO.getCompany(companyNameFromForm) != null)){
+		    ModelAndView modelAndView = new ModelAndView("companyForm");
+			List<CompanyType> companyTypesList = companyDAO.listCompanyTypes();
+			modelAndView.addObject("companyTypesList", companyTypesList);
+			modelAndView.addObject("title", "Existing Company");
+			modelAndView.addObject("buttontext", "Update Company");
+		    modelAndView.addObject("company", company);
+		    modelAndView.addObject("duplicateCompany", true);
+			return modelAndView;
+		}
+		else {
+			companyDAO.updateCompany(company);
+			return new ModelAndView("redirect:/companyList");			
+		}
 
-		
-		
-		companyDAO.updateCompany(company);
-		return new ModelAndView("redirect:/companyList");
 	}
 	
 }
