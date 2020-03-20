@@ -33,14 +33,7 @@ public class CompanyController {
 	@RequestMapping(value = "/companyList", method = RequestMethod.GET)
 	public String companyList(Model model, Principal principal) {
 		List<Company> allcompanys = companyDAO.listCompaniesStrCompanyType(principal.getName());
-		
 		List<String> getCompaniesUsed = companyDAO.getCompaniesUsed(principal.getName());
-		
-		/*
-		for (String test : getCompaniesUsed) {
-			System.out.println("This company is used: " +test);
-		}
-		*/
 		model.addAttribute("companyList", allcompanys);
 		model.addAttribute("companiesUsed", getCompaniesUsed);
 		return "companyList";
@@ -112,10 +105,7 @@ public class CompanyController {
 		int companyId = Integer.parseInt(request.getParameter("id"));
 		String companyNameInDB = companyDAO.getCompany(companyId).getName();
 		String companyNameFromForm = company.getName();
-		
-		System.out.println("companyNameInDB: " +companyNameInDB);
-		System.out.println("companyNameFromForm: " +companyNameFromForm);
-		System.out.println("Equal? " + companyNameInDB.equals(companyNameFromForm));
+	
 		
 		// The name is being changed but the desired name is already in db
 		if (!companyNameInDB.equals(companyNameFromForm) && (companyDAO.getCompany(companyNameFromForm) != null)){

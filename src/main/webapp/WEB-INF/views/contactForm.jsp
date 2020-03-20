@@ -29,6 +29,9 @@
                     	<form:input path="lastName" type="text" name="lastName" class="form-control" id="lastName" placeholder="Contacts Last Name"   pattern="[A-Za-z]{2,25}" required="required" title="2 to 25 letters" />
                 	    <div class="validation"></div>
                 	</div>
+   					<c:if test="${duplicateContact == true}">
+      					<div class="formErrorMsg"> That contact is already registered</div>
+  					</c:if>
            		</div>
                 <div class="form-row">
                 	<div class="form-group col-md-6">

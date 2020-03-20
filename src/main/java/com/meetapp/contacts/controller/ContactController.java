@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.meetapp.company.dao.CompanyDAO;
 import com.meetapp.company.model.Company;
+import com.meetapp.company.model.CompanyType;
 import com.meetapp.contacts.dao.ContactDAO;
 import com.meetapp.contacts.model.Contact;
 import com.meetapp.login.LoginController;
@@ -52,8 +53,24 @@ public class ContactController {
 	
 	@RequestMapping(value = "/newContact", method = RequestMethod.POST)
 	public ModelAndView submitContact(ModelAndView model, Contact contact, Principal principal) {
-		contactDAO.insertContact(contact, principal.getName());
-		return new ModelAndView("redirect:/contactList");
+		if(contactDAO.getContact(contact.getFirstName(), contact.getLastName()) != null) {
+			ModelAndView modelAndView = new ModelAndView("contactForm");
+			List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
+			modelAndView.addObject("companiesList", currentCompaniesList);
+			Contact newContact = new Contact();
+			modelAndView.addObject("contact", newContact);
+			modelAndView.addObject("title", "New Contact");
+			modelAndView.addObject("buttontext", "Create Contact");
+		    modelAndView.addObject("duplicateContact", true);
+			return modelAndView;			
+		}
+		else {
+			contactDAO.insertContact(contact, principal.getName());
+			ModelAndView modelAndView = new ModelAndView("contactList");
+			List<Contact> allContacts = contactDAO.listContacts(principal.getName());
+			modelAndView.addObject("contactList", allContacts);
+			return modelAndView;			
+		}
 	}
 	
 	
@@ -80,9 +97,37 @@ public class ContactController {
 	
 
 	@RequestMapping(value = "/editContact", method = RequestMethod.POST)
-	public ModelAndView updateContact(Model model, Contact contact) {
-		contactDAO.updateContact(contact);
-		return new ModelAndView("redirect:/contactList");
+	public ModelAndView updateContact(HttpServletRequest request, Model model, Contact contact, Principal principal) {
+		
+		int contactId = Integer.parseInt(request.getParameter("id"));
+		String contactFirstNameInDB = contactDAO.getContact(contactId).getFirstName();
+		String contactLastNameInDB = contactDAO.getContact(contactId).getLastName();
+		String contactFirstNameFromForm = contact.getFirstName();
+		String contactLastNameFromForm = contact.getLastName();
+		
+		
+		// The name is being changed but the desired name is already in db
+		if (!contactFirstNameInDB.equals(contactFirstNameFromForm) && 
+				!contactLastNameInDB.equals(contactLastNameFromForm) &&
+				(contactDAO.getContact(contactFirstNameFromForm, contactLastNameFromForm) != null)){
+			
+		    ModelAndView modelAndView = new ModelAndView("contactForm");
+			List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
+			modelAndView.addObject("contact", contact);
+			modelAndView.addObject("companiesList", currentCompaniesList);
+			modelAndView.addObject("title", "Existing Contact");
+			modelAndView.addObject("buttontext", "Update Contact");
+		    modelAndView.addObject("duplicateContact", true);
+		    
+		    return modelAndView;
+		}
+		else {
+			contactDAO.updateContact(contact);
+			return new ModelAndView("redirect:/contactList");			
+		}
+		
+		
+		
 	}
 	
 	

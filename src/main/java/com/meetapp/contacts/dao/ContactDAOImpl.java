@@ -92,4 +92,25 @@ public class ContactDAOImpl implements ContactDAO {
 		});
 	}
 
+	
+	@Override
+	public Contact getContact(String firstName, String lastName) {
+		String sql = "SELECT contact.first_name, contact.last_name FROM contact WHERE "
+				+ "contact.first_name ='" +firstName+ "' AND contact.last_name = '" +lastName+ "'";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Contact>() {
+			@Override
+			public Contact extractData(ResultSet rs) throws SQLException,
+					DataAccessException {
+				if (rs.next()) {
+					//dummy object just to show row found
+					Contact contact = new Contact();
+					System.out.println("Contact Duplicated");
+					return contact;
+				}
+				return null;
+			}
+		});
+	}
+	
+	
 }
