@@ -3,10 +3,14 @@
 
   //Added Date time picker
   $(function () {
-      $('#datetimepicker1').datetimepicker({
+
+	  $('#datetimepicker1, #datetimepicker2').datetimepicker({
           format: 'DD/MM/YYYY HH:mm',
       });
+  
   });
+  
+  
   
   
   // Preloader (if the #preloader div exists)

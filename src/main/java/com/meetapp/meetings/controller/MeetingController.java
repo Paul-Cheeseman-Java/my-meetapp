@@ -5,6 +5,7 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,6 +64,7 @@ public class MeetingController {
 		*/
 		Meeting newMeeting = new Meeting();
 		newMeeting.setMeeting_start(LocalDateTime.now());
+		newMeeting.setMeeting_end(LocalDateTime.now());
 		model.addAttribute("meeting", newMeeting);
 		model.addAttribute("title", "New Meeting");
 		model.addAttribute("buttontext", "Create Meeting");
@@ -75,26 +77,27 @@ public class MeetingController {
 	
 	
 	@RequestMapping(value = "/newMeeting", method = RequestMethod.POST)
-	public ModelAndView submitContact(ModelAndView model, Meeting meeting, Principal principal)
+	public ModelAndView submitContact(ModelAndView model, Meeting meeting, Principal principal, HttpServletRequest request)
 	{
 		
-		System.out.println("Submit: " + submitDateTime);
-		System.out.println("Now: " + LocalDateTime.now());
 		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
 			//Not perfect, as is form is left for a while then a past date can be put in, but the error window is small
 			//Do outside SPRING, just set a variable to flag and "If exist..."
 			System.out.println("In Past - reject!");
 		}
-
+		
+		//then, if meeting end is before meeting start (or less than 15 mins after)
+		
+		
+		//Enumeration<String> test = request.getParameterNames();
+		for (Enumeration<String> all = request.getParameterNames(); all.hasMoreElements();)
+		       System.out.println("Test: " +all.nextElement());
+		
+		
+		System.out.println("Meeting Start: " +meeting.getMeeting_start());
+		System.out.println("Meeting End: " +meeting.getMeeting_end());
 		//meetingDAO.insertMeeting(meeting);
 
-		
-		//Meeting test = meetingDAO.getMeeting(3);
-		//System.out.println("Testing: " +test.getMeeting_start());
-
-		//System.out.println("Testing /'s?: " +Meeting.convertDatetoBlackSlash(test.getMeeting_start().toLocalDate()));
-		//System.out.println("Testing Date: " +test.getMeeting_start().toLocalDate());		
-		//System.out.println("Testing Time: " +test.getMeeting_start().toLocalTime());
 		
 		return new ModelAndView("redirect:/newMeeting");
 	}
