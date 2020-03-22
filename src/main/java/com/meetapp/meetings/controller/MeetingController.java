@@ -56,18 +56,16 @@ public class MeetingController {
 		
 		//NEW MEETING WILL HAVE 'NOW()' FOR MEETING TIME, AMEND WILL HAVE DATES/TIMES (AND EVERYTHING ELSE) FROM DB 
 		
-		/*
 		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
 		List<Contact> currentContactsList = contactDAO.listContacts(principal.getName());
-		model.addAttribute("companiesList", currentCompaniesList);
-		model.addAttribute("contactsList", currentContactsList);
-		*/
 		Meeting newMeeting = new Meeting();
 		newMeeting.setMeeting_start(LocalDateTime.now());
 		newMeeting.setMeeting_end(LocalDateTime.now());
 		model.addAttribute("meeting", newMeeting);
 		model.addAttribute("title", "New Meeting");
 		model.addAttribute("buttontext", "Create Meeting");
+		model.addAttribute("companiesList", currentCompaniesList);
+		model.addAttribute("contactsList", currentContactsList);
 		//System.out.println("Test: " +newMeeting.getNotes());
 		//System.out.println("Test: " +newMeeting.getMeeting_start());
 		return "meetingForm";
@@ -81,21 +79,23 @@ public class MeetingController {
 	{
 		
 		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
-			//Not perfect, as is form is left for a while then a past date can be put in, but the error window is small
-			//Do outside SPRING, just set a variable to flag and "If exist..."
+			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
 			System.out.println("In Past - reject!");
+			//Send error msg
 		}
 		
-		//then, if meeting end is before meeting start (or less than 15 mins after)
+		if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
+			System.out.println("Meeting Under 15 mins - reject!");
+			//Send error msg
+		}
 		
-		
-		//Enumeration<String> test = request.getParameterNames();
-		for (Enumeration<String> all = request.getParameterNames(); all.hasMoreElements();)
-		       System.out.println("Test: " +all.nextElement());
-		
+		//iterate over all users meetings
+		//if start d/t is  
 		
 		System.out.println("Meeting Start: " +meeting.getMeeting_start());
 		System.out.println("Meeting End: " +meeting.getMeeting_end());
+		System.out.println("Meeting Contact: " +meeting.getContact_id());
+		System.out.println("Meeting Company: " +meeting.getCompany_id());
 		//meetingDAO.insertMeeting(meeting);
 
 		

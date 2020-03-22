@@ -29,6 +29,24 @@
                     		</div>
                 		</div>
       				</div>
+
+               	<div class="form-group col-md-6">
+             			<label>Select Company:</label>
+             			<c:choose>
+    						<c:when test="${empty companiesList}">
+								<div class="formErrorMsg"> Please add a company before adding meeting</div>
+					    	</c:when>    
+    						<c:otherwise>
+             					<div>
+             						<form:select id = "companyDropdownList" path="company_id">
+             						<c:forEach items="${companiesList}" var="company">
+               							<option value = "${company.id}">${company.name}</option>
+              						</c:forEach>
+             						</form:select>
+             					</div>  							
+					    	</c:otherwise>
+						</c:choose>
+                	</div>
                </div>
                
                
@@ -44,23 +62,28 @@
                     		</div>
                 		</div>
       				</div>
+      				
+      				<div class="form-group col-md-6">
+             			<label>Select Contact:</label>
+             			<c:choose>
+    						<c:when test="${empty contactsList}">
+								<div class="formErrorMsg"> Please add a contact before adding a meeting</div>
+					    	</c:when>    
+    						<c:otherwise>
+             					<div>
+             						<form:select id = "contactDropdownList" path="contact_id">
+             						<c:forEach items="${contactsList}" var="contact">
+               							<option value = "${contact.id}">${contact.firstName}&#160;${contact.lastName}</option>
+              						</c:forEach>
+             						</form:select>
+             					</div>  							
+					    	</c:otherwise>
+						</c:choose>
+                	</div>
                </div>
                
+                <div class="text-center"><button class="btn btn-light <c:if test="${(empty companiesList || empty contactsList)}">disabled</c:if>" type="submit" title="${buttontext}">${buttontext}</button></div>
                
-               
-               <div class="form-row">
-    				<div class="form-group col-md-4">
-    					<label>Duration Hours:</label>
-						<input  id="hours" type="number" step="1" value="0" min="0" max="24">
-					</div>      				      				
-               </div>
-               <div class="form-row">
-                	<div class="form-group col-md-4">
-						<label>Duration Minutes:</label>
-						<input  id="minute" type="number" step="15" value="0" min="0" max="60">
-					</div>      				      				
-               </div>
-                <div class="text-center"><button class="btn btn-light" type="submit" title="${buttontext}">${buttontext}</button></div>
             </form:form>		
 
 
