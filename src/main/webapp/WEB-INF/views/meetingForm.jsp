@@ -80,7 +80,21 @@
 					    	</c:otherwise>
 						</c:choose>
                 	</div>
+
+      				<div class="form-group col-md-3">
+             			<label>Select Meeting Type:</label>
+       						<form:select id = "meetingTypeDropdownList" path="meeting_type">
+          						<c:forEach items="${meetingTypesList}" var="meetingType">
+	       							<option value = "${meetingType.id}">${meetingType.type}</option>
+           						</c:forEach>
+       						</form:select>
+                	</div>
+
                </div>
+               
+               
+               
+               
                
                 <div class="text-center"><button class="btn btn-light <c:if test="${(empty companiesList || empty contactsList)}">disabled</c:if>" type="submit" title="${buttontext}">${buttontext}</button></div>
                

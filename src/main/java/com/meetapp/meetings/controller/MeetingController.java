@@ -25,6 +25,7 @@ import com.meetapp.contacts.model.Contact;
 import com.meetapp.login.LoginController;
 import com.meetapp.meetings.dao.MeetingDAO;
 import com.meetapp.meetings.model.Meeting;
+import com.meetapp.meetings.model.MeetingType;
 
 
 @Controller
@@ -58,6 +59,8 @@ public class MeetingController {
 		
 		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
 		List<Contact> currentContactsList = contactDAO.listContacts(principal.getName());
+		List<MeetingType> meetingTypesList = meetingDAO.listMeetingTypes();
+		
 		Meeting newMeeting = new Meeting();
 		newMeeting.setMeeting_start(LocalDateTime.now());
 		newMeeting.setMeeting_end(LocalDateTime.now());
@@ -66,6 +69,7 @@ public class MeetingController {
 		model.addAttribute("buttontext", "Create Meeting");
 		model.addAttribute("companiesList", currentCompaniesList);
 		model.addAttribute("contactsList", currentContactsList);
+		model.addAttribute("meetingTypesList", meetingTypesList);
 		//System.out.println("Test: " +newMeeting.getNotes());
 		//System.out.println("Test: " +newMeeting.getMeeting_start());
 		return "meetingForm";
@@ -96,6 +100,7 @@ public class MeetingController {
 		System.out.println("Meeting End: " +meeting.getMeeting_end());
 		System.out.println("Meeting Contact: " +meeting.getContact_id());
 		System.out.println("Meeting Company: " +meeting.getCompany_id());
+		System.out.println("Meeting Type: " +meeting.getMeeting_type());
 		//meetingDAO.insertMeeting(meeting);
 
 		

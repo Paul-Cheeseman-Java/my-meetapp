@@ -15,7 +15,9 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.meetapp.company.model.CompanyType;
 import com.meetapp.meetings.model.Meeting;
+import com.meetapp.meetings.model.MeetingType;
 
 @Repository
 public class MeetingDAOImpl implements MeetingDAO {
@@ -106,4 +108,25 @@ public class MeetingDAOImpl implements MeetingDAO {
 		});
 	}
 
+	@Override
+	public List<MeetingType> listMeetingTypes() {
+		String sql = "SELECT * FROM meeting_type";
+		List<MeetingType> listMeetingTypes = jdbcTemplate.query(sql, new RowMapper<MeetingType>() {
+
+			public MeetingType mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MeetingType aMeetingType = new MeetingType();
+	
+				aMeetingType.setId(rs.getInt("id"));
+				aMeetingType.setType(rs.getString("type"));
+				
+				return aMeetingType;
+			}
+			
+		});
+		Collections.sort(listMeetingTypes);		
+		return listMeetingTypes;
+	}
+	
+	
+	
 }

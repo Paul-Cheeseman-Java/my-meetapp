@@ -3,6 +3,7 @@ package com.meetapp.meetings.dao;
 import java.util.List;
 
 import com.meetapp.meetings.model.Meeting;
+import com.meetapp.meetings.model.MeetingType;
 
 
 public interface MeetingDAO {
@@ -17,6 +18,8 @@ public interface MeetingDAO {
 	public void deleteMeeting(int MeetingId);
 	
 	public Meeting getMeeting(int MeetingId);
+	
+	public List<MeetingType> listMeetingTypes();
 	
 	public List<Meeting> listMeetings(String username);
 }
