@@ -89,12 +89,16 @@
            						</c:forEach>
        						</form:select>
                 	</div>
-
                </div>
                
                
-               
-               
+              <div class="form-row">
+	              	<div class="form-group col-md-12">
+             			<label>Notes:</label>
+                		<form:textarea path="notes"	cols="120"/>
+     				</div>
+     				
+    			</div>           
                
                 <div class="text-center"><button class="btn btn-light <c:if test="${(empty companiesList || empty contactsList)}">disabled</c:if>" type="submit" title="${buttontext}">${buttontext}</button></div>
                

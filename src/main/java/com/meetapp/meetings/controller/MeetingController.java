@@ -101,6 +101,7 @@ public class MeetingController {
 		System.out.println("Meeting Contact: " +meeting.getContact_id());
 		System.out.println("Meeting Company: " +meeting.getCompany_id());
 		System.out.println("Meeting Type: " +meeting.getMeeting_type());
+		System.out.println("Meeting Notes: " +meeting.getNotes());
 		//meetingDAO.insertMeeting(meeting);
 
 		
