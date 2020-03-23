@@ -41,17 +41,13 @@ public class MeetingDAOImpl implements MeetingDAO {
 
 	
 	@Override
-	public void insertMeeting(Meeting meeting) {
-		String sql = "INSERT INTO Meeting (contact_id, company_id, meeting_type, notes, meeting_start, meeting_end) VALUES (?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, 1, 1, 1, "Blah", meeting.getMeeting_start(), meeting.getMeeting_start());
+	public void insertMeeting(Meeting meeting, String username) {
+		String sql = "INSERT INTO Meeting (contact_id, company_id, meeting_type, notes, meeting_start, meeting_end, username) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, meeting.getContact_id(), meeting.getCompany_id(), meeting.getMeeting_type(), meeting.getNotes(), meeting.getMeeting_start(), meeting.getMeeting_end(), username);
 	}
 
 	
-	@Override
-	public void insertMeeting(Meeting Meeting, String username) {
-		//String sql = "INSERT INTO Meeting (first_name, last_name, email, company_id, phone, username) VALUES (?, ?, ?, ?, ?, ?)";
-		//jdbcTemplate.update(sql, Meeting.getFirstName(), Meeting.getLastName(), Meeting.getEmail(), Meeting.getCompany(), Meeting.getPhone(), username);
-	}
+
 
 	
 	

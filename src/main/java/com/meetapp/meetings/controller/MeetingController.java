@@ -86,11 +86,11 @@ public class MeetingController {
 			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
 			System.out.println("In Past - reject!");
 			//Send error msg
-		}
-		
-		if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
+		} else if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
 			System.out.println("Meeting Under 15 mins - reject!");
 			//Send error msg
+		} else {
+			meetingDAO.insertMeeting(meeting, principal.getName());
 		}
 		
 		//iterate over all users meetings
