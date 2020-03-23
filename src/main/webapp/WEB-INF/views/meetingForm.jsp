@@ -14,7 +14,10 @@
   		</div>
 
 	<div class="form">
-        	<div id="errormessage"></div>
+	        
+			<c:if test="${meetingError ne null}">
+				<div class="formErrorMsg"> ${meetingError}</div>
+			</c:if>
             <form:form method="post" role="form" commandName="meeting">
              	<div class="form-row">
                 	<div class="form-group col-md-3 offset-md-3 text-center">
@@ -86,7 +89,6 @@
            					</c:forEach>
        					</form:select>
                 	</div>
-                	
 				</div>
                
               	<div class="form-row">

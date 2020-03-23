@@ -10,7 +10,9 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Meeting {
+import com.meetapp.company.model.Company;
+
+public class Meeting  implements Comparable<Meeting> {
 
 	private int id;
 	private int contact_id;
@@ -21,6 +23,18 @@ public class Meeting {
 	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_start;
 	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_end;	
 
+	
+	//Sort date/time so most recent meeting is at top 
+	public int compareTo(Meeting meeting) {
+        LocalDateTime dateTime1 = this.meeting_start;
+        LocalDateTime dateTime2 = meeting.meeting_start;
+        return dateTime1.compareTo(dateTime2);
+	}
+	
+	
+	
+		
+	
 	public Meeting() {
 		
 	}
@@ -102,22 +116,36 @@ public class Meeting {
 		this.meeting_end = meeting_end;
 	}
 
-	
+	/*
 	public void joinDateTimeMeetingStart(Date date, Time time) {
 		String inputDate = date.toString();
 		String inputDateWithSpace = inputDate.concat(" ");
 		String inputTime = time.toString();
-	
 		String inputTimeNoMilli = inputTime.substring(0, inputTime.length() - 3);
-
-		
 		String dateTime = inputDateWithSpace.concat(inputTimeNoMilli);
-		
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		this.setMeeting_start(LocalDateTime.parse(dateTime, myFormatObj));
+	}
+	*/
+	
+	public static LocalDateTime joinDateTime(Date date, Time time) {
+		LocalDate localDate = date.toLocalDate();
+		LocalTime localTime = time.toLocalTime();
 		
+		String inputDate = localDate.toString();
+		String inputDateWithSpace = inputDate.concat(" ");
+		String inputTime = localTime.toString();
+		//String inputTimeNoMilli = inputTime.substring(0, inputTime.length() - 3);
+		//String dateTime = inputDateWithSpace.concat(inputTimeNoMilli);
+		String dateTime = inputDateWithSpace.concat(inputTime);
+		
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		System.out.println("DateTime: " + LocalDateTime.parse(dateTime, myFormatObj));
+		return LocalDateTime.parse(dateTime, myFormatObj);
 	}
 	
+	
+	/*
 	public void joinDateTimeMeetingEnd(Date date, Time time) {
 		
 	}
@@ -147,10 +175,7 @@ public class Meeting {
 		String dateStr = date.toString().replace('-','/');
 		return dateStr;
 	}
-	
+	*/
 
-	
-	
-	
 	
 }

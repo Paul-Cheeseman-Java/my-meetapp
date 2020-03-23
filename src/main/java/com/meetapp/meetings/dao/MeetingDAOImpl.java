@@ -59,27 +59,28 @@ public class MeetingDAOImpl implements MeetingDAO {
 
 	@Override
 	public List<Meeting> listMeetings(String username) {
-		/*
 		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'";
 		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
 
 			@Override
 			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Meeting aMeeting = new Meeting();
-				aMeeting.setId(rs.getInt("id"));
-				aMeeting.setFirstName(rs.getString("first_name"));				
-				aMeeting.setLastName(rs.getString("last_name"));
-				aMeeting.setEmail(rs.getString("email"));
-				aMeeting.setCompany(rs.getInt("company_id"));
-				aMeeting.setPhone(rs.getString("phone"));
-				return aMeeting;
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("id"));
+				meeting.setContact_id(rs.getInt("contact_id"));				
+				meeting.setCompany_id(rs.getInt("company_id"));
+				meeting.setMeeting_type(rs.getInt("meeting_type"));
+				meeting.setMeeting_start(Meeting.joinDateTime(rs.getDate("meeting_start"), rs.getTime("meeting_start")));
+				meeting.setMeeting_end(Meeting.joinDateTime(rs.getDate("meeting_end"), rs.getTime("meeting_end")));
+				return meeting;
 			}
 		});
 		Collections.sort(listMeeting);
+		
+		for(Meeting test : listMeeting) {
+			System.out.println("Start: " +test.getMeeting_start());
+		} 
+		
 		return listMeeting;
-		*/
-		List<Meeting> dummy = new ArrayList<Meeting>();
-		return dummy;
 	}
 
 	
@@ -91,13 +92,14 @@ public class MeetingDAOImpl implements MeetingDAO {
 			public Meeting extractData(ResultSet rs) throws SQLException,
 					DataAccessException {
 				if (rs.next()) {
-					Meeting Meeting = new Meeting();
-					Meeting.setId(rs.getInt("id"));
-					Meeting.setContact_id(rs.getInt("contact_id"));
-					Meeting.setCompany_id(rs.getInt("company_id"));					
-					Meeting.setMeeting_type(rs.getInt("meeting_type"));
-					Meeting.joinDateTimeMeetingStart(rs.getDate("meeting_start"), rs.getTime("meeting_start"));
-					return Meeting;
+					Meeting meeting = new Meeting();
+					meeting.setId(rs.getInt("id"));
+					meeting.setContact_id(rs.getInt("contact_id"));
+					meeting.setCompany_id(rs.getInt("company_id"));					
+					meeting.setMeeting_type(rs.getInt("meeting_type"));
+					meeting.setMeeting_start(Meeting.joinDateTime(rs.getDate("meeting_start"), rs.getTime("meeting_start")));
+					meeting.setMeeting_end(Meeting.joinDateTime(rs.getDate("meeting_end"), rs.getTime("meeting_end")));
+					return meeting;
 				}
 				return null;
 			}

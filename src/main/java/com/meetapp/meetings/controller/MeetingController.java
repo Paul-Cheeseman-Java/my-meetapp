@@ -40,14 +40,12 @@ public class MeetingController {
 	@Autowired
 	private MeetingDAO meetingDAO;
 	
-	/*
 	@RequestMapping(value = "/meetingList", method = RequestMethod.GET)
-	public String contactList(Model model, Principal principal) {
-		List<Contact> allmeetings = meetingDAO.listContacts(principal.getName());
+	public String meetingList(Model model, Principal principal) {
+		List<Meeting> allmeetings = meetingDAO.listMeetings(principal.getName());
 		model.addAttribute("meetingList", allmeetings);
 		return "meetingList";
 	}
-	*/
 
 	//Global var not ideal...
 	LocalDateTime submitDateTime = LocalDateTime.now();
@@ -70,8 +68,6 @@ public class MeetingController {
 		model.addAttribute("companiesList", currentCompaniesList);
 		model.addAttribute("contactsList", currentContactsList);
 		model.addAttribute("meetingTypesList", meetingTypesList);
-		//System.out.println("Test: " +newMeeting.getNotes());
-		//System.out.println("Test: " +newMeeting.getMeeting_start());
 		return "meetingForm";
 	}
 	
@@ -79,33 +75,45 @@ public class MeetingController {
 	
 	
 	@RequestMapping(value = "/newMeeting", method = RequestMethod.POST)
-	public ModelAndView submitContact(ModelAndView model, Meeting meeting, Principal principal, HttpServletRequest request)
+	public ModelAndView submitContact(Meeting meeting, Principal principal, HttpServletRequest request)
 	{
+		
+		ModelAndView modelAndView = new ModelAndView("meetingForm");
+		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
+		List<Contact> currentContactsList = contactDAO.listContacts(principal.getName());
+		List<MeetingType> meetingTypesList = meetingDAO.listMeetingTypes();
+		
+		modelAndView.addObject("title", "New Meeting");
+		modelAndView.addObject("buttontext", "Create Meeting");
+		modelAndView.addObject("companiesList", currentCompaniesList);
+		modelAndView.addObject("contactsList", currentContactsList);
+		modelAndView.addObject("meetingTypesList", meetingTypesList);
+		
+		
+	    //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+	    //String strDate= formatter.format(date);  
+
 		
 		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
 			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
 			System.out.println("In Past - reject!");
-			//Send error msg
+			modelAndView.addObject("meetingError", "Meeting in the past - Rejected");
+			
 		} else if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
 			System.out.println("Meeting Under 15 mins - reject!");
-			//Send error msg
+			modelAndView.addObject("meetingError", "Meeting under 15 mins - Rejected");
+			
+			
+			//prevent a meeting being longer than 24 hours
+			
 		} else {
+			//modelAndView.addObject("meetingError", "Inserted");
 			meetingDAO.insertMeeting(meeting, principal.getName());
 		}
 		
-		//iterate over all users meetings
-		//if start d/t is  
+		return modelAndView;
 		
-		System.out.println("Meeting Start: " +meeting.getMeeting_start());
-		System.out.println("Meeting End: " +meeting.getMeeting_end());
-		System.out.println("Meeting Contact: " +meeting.getContact_id());
-		System.out.println("Meeting Company: " +meeting.getCompany_id());
-		System.out.println("Meeting Type: " +meeting.getMeeting_type());
-		System.out.println("Meeting Notes: " +meeting.getNotes());
-		//meetingDAO.insertMeeting(meeting);
 
-		
-		return new ModelAndView("redirect:/newMeeting");
 	}
 	
 
