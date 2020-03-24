@@ -14,6 +14,11 @@
 }
 */
 
+
+.table thead th{
+	color: #ffffff;
+}
+
 textarea{
 	 max-width:100%; 
 }

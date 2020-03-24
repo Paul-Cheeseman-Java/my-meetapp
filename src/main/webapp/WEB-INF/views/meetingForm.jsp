@@ -89,6 +89,10 @@
            					</c:forEach>
        					</form:select>
                 	</div>
+                	<div class="form-group col-md-3 text-center">
+             			<label>Location:</label>
+                    	<form:input path="location" type="text" placeholder="location" required="required"/>
+                	</div>
 				</div>
                
               	<div class="form-row">

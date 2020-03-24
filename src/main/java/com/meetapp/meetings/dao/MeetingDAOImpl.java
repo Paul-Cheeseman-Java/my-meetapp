@@ -42,8 +42,8 @@ public class MeetingDAOImpl implements MeetingDAO {
 	
 	@Override
 	public void insertMeeting(Meeting meeting, String username) {
-		String sql = "INSERT INTO Meeting (contact_id, company_id, meeting_type, notes, meeting_start, meeting_end, username) VALUES (?, ?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, meeting.getContact_id(), meeting.getCompany_id(), meeting.getMeeting_type(), meeting.getNotes(), meeting.getMeeting_start(), meeting.getMeeting_end(), username);
+		String sql = "INSERT INTO Meeting (contact_id, company_id, meeting_type, notes, meeting_start, meeting_end, username, location) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, meeting.getContact_id(), meeting.getCompany_id(), meeting.getMeeting_type(), meeting.getNotes(), meeting.getMeeting_start(), meeting.getMeeting_end(), username, meeting.getLocation());
 	}
 
 	
@@ -66,8 +66,9 @@ public class MeetingDAOImpl implements MeetingDAO {
 			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Meeting meeting = new Meeting();
 				meeting.setId(rs.getInt("id"));
-				meeting.setContact_id(rs.getInt("contact_id"));				
 				meeting.setCompany_id(rs.getInt("company_id"));
+				meeting.setContact_id(rs.getInt("contact_id"));
+				meeting.setLocation(rs.getString("location"));
 				meeting.setMeeting_type(rs.getInt("meeting_type"));
 				meeting.setMeeting_start(Meeting.joinDateTime(rs.getDate("meeting_start"), rs.getTime("meeting_start")));
 				meeting.setMeeting_end(Meeting.joinDateTime(rs.getDate("meeting_end"), rs.getTime("meeting_end")));
@@ -95,7 +96,8 @@ public class MeetingDAOImpl implements MeetingDAO {
 					Meeting meeting = new Meeting();
 					meeting.setId(rs.getInt("id"));
 					meeting.setContact_id(rs.getInt("contact_id"));
-					meeting.setCompany_id(rs.getInt("company_id"));					
+					meeting.setCompany_id(rs.getInt("company_id"));
+					meeting.setLocation(rs.getString("location"));
 					meeting.setMeeting_type(rs.getInt("meeting_type"));
 					meeting.setMeeting_start(Meeting.joinDateTime(rs.getDate("meeting_start"), rs.getTime("meeting_start")));
 					meeting.setMeeting_end(Meeting.joinDateTime(rs.getDate("meeting_end"), rs.getTime("meeting_end")));

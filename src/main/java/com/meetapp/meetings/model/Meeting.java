@@ -17,6 +17,10 @@ public class Meeting  implements Comparable<Meeting> {
 	private int id;
 	private int contact_id;
 	private int company_id;
+	private String contact_firstName;
+	private String contact_lastName;
+	private String company_name;
+	private String location;
 	private int meeting_type;
 	private String notes;
 	
@@ -32,20 +36,66 @@ public class Meeting  implements Comparable<Meeting> {
 	}
 	
 	
-	
-		
-	
 	public Meeting() {
 		
 	}
 
-	
 	
 	public Meeting(int id, int contact_id, int meeting_type, String notes, LocalDateTime meeting_start, LocalDateTime meeting_end) {
 		
 	}	
 	
 	
+	public Meeting(String contact_name, String contact_firstName, String contact_lastName, String location, String company_name, int meeting_type, String notes, LocalDateTime meeting_start, LocalDateTime meeting_end) {
+		this.contact_firstName = contact_firstName;
+		this.contact_lastName = contact_lastName;
+		this.location = location;
+		this.company_name = company_name;
+		this.meeting_type = meeting_type;
+		this.notes = notes;
+		this.meeting_start = meeting_start;
+		this.meeting_start = meeting_start;
+	}	
+	
+	
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	
+	public String getContact_firstName() {
+		return contact_firstName;
+	}
+
+
+	public void setContact_firstName(String contact_firstName) {
+		this.contact_firstName = contact_firstName;
+	}
+
+	public String getContact_lastName() {
+		return contact_lastName;
+	}
+
+
+	public void setContact_lastName(String contact_lastName) {
+		this.contact_lastName = contact_lastName;
+	}
+
+
+	public String getCompany_name() {
+		return company_name;
+	}
+
+	
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
+	}
+
 	
 	public int getId() {
 		return id;

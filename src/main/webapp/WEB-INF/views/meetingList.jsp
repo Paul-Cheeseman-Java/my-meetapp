@@ -20,12 +20,13 @@
 	</div>		
 	<table class="table table-striped">
 		<thead>
-			<tr>
+			<tr id="whitTableHeading">
 				<th>Date</th>
 				<th>Start</th>
 				<th>End</th>
 				<th>Contact</th>
 				<th>Company</th>
+				<th>Location</th>
 				<th class="d-none d-md-table-cell">Action</th>
 			</tr>
 		</thead>
@@ -37,8 +38,9 @@
 					<td><javatime:format value="${meeting.meeting_start}" pattern="dd-MM-yyyy" /></td>
 					<td><javatime:format value="${meeting.meeting_start}" pattern="hh:mm" /></td>
 					<td><javatime:format value="${meeting.meeting_end}" pattern="hh:mm" /></td>
-					<td>${meeting.contact_id}</td>
-					<td>${meeting.company_id}</td>
+					<td>${meeting.contact_firstName}&#160;${meeting.contact_lastName}</td>
+					<td>${meeting.company_name}</td>
+					<td>${meeting.location}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

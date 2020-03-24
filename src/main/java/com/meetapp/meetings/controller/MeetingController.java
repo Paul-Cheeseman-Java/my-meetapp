@@ -43,7 +43,24 @@ public class MeetingController {
 	@RequestMapping(value = "/meetingList", method = RequestMethod.GET)
 	public String meetingList(Model model, Principal principal) {
 		List<Meeting> allmeetings = meetingDAO.listMeetings(principal.getName());
+
+		
+		for (Meeting meeting: allmeetings) {
+			//System.out.println("Comp-id: " +meeting.getCompany_id());
+			//companyDAO.getCompany(meeting.getCompany_id()).getName();
+			//System.out.println("No.2: " +companyDAO.getCompany(1).getName());
+			//System.out.println("Company Name: " +companyDAO.getCompany(meeting.getCompany_id()).getName());
+			//System.out.println("First Name: " +contactDAO.getContact(meeting.getContact_id()).getFirstName());
+			//System.out.println("Last Name: " +contactDAO.getContact(meeting.getContact_id()).getLastName());
+			meeting.setCompany_name(companyDAO.getCompany(meeting.getCompany_id()).getName());
+			meeting.setContact_firstName(contactDAO.getContact(meeting.getContact_id()).getFirstName());
+			meeting.setContact_lastName(contactDAO.getContact(meeting.getContact_id()).getLastName());
+		}
+		
+
 		model.addAttribute("meetingList", allmeetings);
+		
+		
 		return "meetingList";
 	}
 
