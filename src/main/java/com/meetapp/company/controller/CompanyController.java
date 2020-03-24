@@ -107,7 +107,7 @@ public class CompanyController {
 		String companyNameFromForm = company.getName();
 	
 		
-		// The name is being changed but the desired name is already in db
+		// The name is being changed but the desired name is already used in db
 		if (!companyNameInDB.equals(companyNameFromForm) && (companyDAO.getCompany(companyNameFromForm) != null)){
 		    ModelAndView modelAndView = new ModelAndView("companyForm");
 			List<CompanyType> companyTypesList = companyDAO.listCompanyTypes();

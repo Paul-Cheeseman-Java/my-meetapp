@@ -112,5 +112,22 @@ public class ContactDAOImpl implements ContactDAO {
 		});
 	}
 	
+	/* Lists Contacts which are associated with a meeting */
+	@Override
+	public List<String> getContactsUsed(String username) {
+		String sql = "SELECT contact.first_name, contact.last_name FROM contact inner join meeting on meeting.contact_id = contact.id "
+				+ "WHERE meeting.username = '" + username + "' GROUP BY contact_id;";
+		
+		List<String> contactsUsed = jdbcTemplate.query(sql, new RowMapper<String>() {
+
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				return rs.getString("first_name") + rs.getString("last_name");
+			}
+			
+		});
+		return contactsUsed;
+	}
+	
 	
 }

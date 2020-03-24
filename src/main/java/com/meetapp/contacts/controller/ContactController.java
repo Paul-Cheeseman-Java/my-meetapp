@@ -34,6 +34,13 @@ public class ContactController {
 	@RequestMapping(value = "/contactList", method = RequestMethod.GET)
 	public String contactList(Model model, Principal principal) {
 		List<Contact> allContacts = contactDAO.listContacts(principal.getName());
+		List<String> getContactsUsed = contactDAO.getContactsUsed(principal.getName());
+		
+		for(String item : getContactsUsed) {
+			System.out.println("Contact " + item);
+		}
+		
+		model.addAttribute("contactsUsed", getContactsUsed);
 		model.addAttribute("contactList", allContacts);
 		return "contactList";
 	}
@@ -54,7 +61,7 @@ public class ContactController {
 	@RequestMapping(value = "/newContact", method = RequestMethod.POST)
 	public ModelAndView submitContact(ModelAndView model, Contact contact, Principal principal) {
 		if(contactDAO.getContact(contact.getFirstName(), contact.getLastName()) != null) {
-			ModelAndView modelAndView = new ModelAndView("contactForm");
+			ModelAndView modelAndView = new ModelAndView("redirect:/contactForm");
 			List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
 			modelAndView.addObject("companiesList", currentCompaniesList);
 			Contact newContact = new Contact();

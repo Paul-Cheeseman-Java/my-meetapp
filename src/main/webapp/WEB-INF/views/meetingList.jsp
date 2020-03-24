@@ -41,6 +41,7 @@
 					<td>${meeting.contact_firstName}&#160;${meeting.contact_lastName}</td>
 					<td>${meeting.company_name}</td>
 					<td>${meeting.location}</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>
