@@ -41,13 +41,14 @@
 					<td>${meeting.contact_firstName}&#160;${meeting.contact_lastName}</td>
 					<td>${meeting.company_name}</td>
 					<td>${meeting.location}</td>
-					
+					<td><a type="button" class="btn btn-warning" href="/MeetApp/editMeeting?id=${meeting.id}">Edit</a> 
+						<a type="button"class="btn btn-success" href="/MeetApp/deleteMeeting?id=${meeting.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a type="button" class="btn btn-success" href="/MeetApp/newCompany">Add</a>
+		<a type="button" class="btn btn-success" href="/MeetApp/newMeeting">Add</a>
 	</div>
 
   	</div>

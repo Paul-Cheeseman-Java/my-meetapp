@@ -48,18 +48,26 @@
                 <div class="form-row">
                 	<div class="form-group col-md-6">
              			<label>Select Company:</label>
-
-
              			<c:choose>
     						<c:when test="${empty companiesList}">
 								<div class="formErrorMsg"> Please add a company before adding contact</div>
 					    	</c:when>    
     						<c:otherwise>
              					<div>
-             						<form:select id = "companyDropdownList" path="company">
-             						<c:forEach items="${companiesList}" var="company">
-               							<option value = "${company.id}">${company.name}</option>
-              						</c:forEach>
+	           						 <form:select id = "companyDropdownList" path="company">
+             							<c:forEach items="${companiesList}" var="theCompany">
+											<!-- Setting the company to correct value on dropdown -->
+             								<c:set var = "currentCompany" scope = "session" value = "${theCompany.id}"/>
+             								<c:set var = "contactCompany" scope = "session" value = "${contact.company}"/>
+             								<c:choose>
+	           									<c:when test="${currentCompany==contactCompany}">
+               										<option selected value = "${theCompany.id}">${theCompany.name}</option>            						
+            									</c:when>
+            				        			<c:otherwise>
+            				            			<option value = "${theCompany.id}">${theCompany.name}</option>            						
+            				        			</c:otherwise>
+                							</c:choose>
+              							</c:forEach>
              						</form:select>
              					</div>  							
 					    	</c:otherwise>

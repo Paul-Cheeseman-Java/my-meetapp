@@ -61,7 +61,7 @@ public class ContactController {
 	@RequestMapping(value = "/newContact", method = RequestMethod.POST)
 	public ModelAndView submitContact(ModelAndView model, Contact contact, Principal principal) {
 		if(contactDAO.getContact(contact.getFirstName(), contact.getLastName()) != null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/contactForm");
+			ModelAndView modelAndView = new ModelAndView("redirect:/newContact");
 			List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
 			modelAndView.addObject("companiesList", currentCompaniesList);
 			Contact newContact = new Contact();

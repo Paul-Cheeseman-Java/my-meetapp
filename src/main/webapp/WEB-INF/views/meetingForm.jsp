@@ -54,10 +54,20 @@
 					    	</c:when>    
     						<c:otherwise>
              					<div>
-             						<form:select id = "companyDropdownList" path="company_id">
-             						<c:forEach items="${companiesList}" var="company">
-               							<option value = "${company.id}">${company.name}</option>
-              						</c:forEach>
+	           						 <form:select id = "companyDropdownList" path="company_id">
+             							<c:forEach items="${companiesList}" var="theCompany">
+											<!-- Setting the company to correct value on dropdown -->
+             								<c:set var = "currentCompany" scope = "session" value = "${theCompany.id}"/>
+             								<c:set var = "contactCompany" scope = "session" value = "${meeting.company_id}"/>
+             								<c:choose>
+	           									<c:when test="${currentCompany==contactCompany}">
+               										<option selected value = "${theCompany.id}">${theCompany.name}</option>            						
+            									</c:when>
+            				        			<c:otherwise>
+            				            			<option value = "${theCompany.id}">${theCompany.name}</option>            						
+            				        			</c:otherwise>
+                							</c:choose>
+              							</c:forEach>
              						</form:select>
              					</div>  							
 					    	</c:otherwise>
@@ -72,9 +82,19 @@
     						<c:otherwise>
              					<div>
              						<form:select id = "contactDropdownList" path="contact_id">
-             						<c:forEach items="${contactsList}" var="contact">
-               							<option value = "${contact.id}">${contact.firstName}&#160;${contact.lastName}</option>
-              						</c:forEach>
+             							<c:forEach items="${contactsList}" var="theContact">
+											<!-- Setting the company to correct value on dropdown -->
+             								<c:set var = "currentContact" scope = "session" value = "${theContact.id}"/>
+             								<c:set var = "meetingContact" scope = "session" value = "${meeting.contact_id}"/>
+             								<c:choose>
+	           									<c:when test="${currentContact==meetingContact}">
+               										<option selected value = "${theContact.id}">${theContact.firstName}&#160;${theContact.lastName}</option>            						
+            									</c:when>
+            				        			<c:otherwise>
+            				            			<option value = "${theContact.id}">${theContact.firstName}&#160;${theContact.lastName}</option>            						
+            				        			</c:otherwise>
+                							</c:choose>
+              							</c:forEach>
              						</form:select>
              					</div>  							
 					    	</c:otherwise>
@@ -83,11 +103,21 @@
                 	
                 	 <div class="form-group col-md-3 text-center">
              			<label>Select Type:</label>
-       					<form:select id = "meetingTypeDropdownList" path="meeting_type">
-          					<c:forEach items="${meetingTypesList}" var="meetingType">
-	       						<option value = "${meetingType.id}">${meetingType.type}</option>
+						<form:select id = "meetingTypeDropdownList" path="meeting_type">
+							<c:forEach items="${meetingTypesList}" var="theMeetingType">
+								<!-- Setting the company to correct value on dropdown -->
+       							<c:set var = "currentMeetingType" scope = "session" value = "${theMeetingType.id}"/>
+       							<c:set var = "theMeetingType" scope = "session" value = "${meeting.meeting_type}"/>
+       							<c:choose>
+      								<c:when test="${theMeetingType.id==meeting.meeting_type}">
+           								<option selected value = "${theMeetingType.id}">${theMeetingType.type}</option>            						
+           							</c:when>
+           		        			<c:otherwise>
+           		            			<option value = "${theMeetingType.id}">${theMeetingType.type}</option>            						
+           		        			</c:otherwise>
+               					</c:choose>
            					</c:forEach>
-       					</form:select>
+           				</form:select>       					
                 	</div>
                 	<div class="form-group col-md-3 text-center">
              			<label>Location:</label>

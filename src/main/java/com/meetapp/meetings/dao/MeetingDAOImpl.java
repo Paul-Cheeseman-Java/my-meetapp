@@ -34,9 +34,9 @@ public class MeetingDAOImpl implements MeetingDAO {
 	}
 
 	@Override
-	public void updateMeeting(Meeting Meeting) {
-		//String sql = "UPDATE Meeting SET first_name=?, last_name=?, email=?, company_id=?, phone=? WHERE id=?";
-		//jdbcTemplate.update(sql, Meeting.getFirstName(), Meeting.getLastName(), Meeting.getEmail(), Meeting.getCompany(), Meeting.getPhone(), Meeting.getId());
+	public void updateMeeting(Meeting meeting) {
+		String sql = "UPDATE Meeting SET contact_id=?, company_id=?, meeting_type=?, notes=?, location=?, meeting_start=?, meeting_end=? WHERE id=?";
+		jdbcTemplate.update(sql, meeting.getContact_id(), meeting.getCompany_id(), meeting.getMeeting_type(), meeting.getNotes(), meeting.getLocation(), meeting.getMeeting_start(), meeting.getMeeting_end(), meeting.getId());
 	}
 
 	
@@ -48,13 +48,10 @@ public class MeetingDAOImpl implements MeetingDAO {
 
 	
 
-
-	
-	
 	@Override
 	public void deleteMeeting(int MeetingId) {
-		//String sql = "DELETE FROM Meeting WHERE id=?";
-		//jdbcTemplate.update(sql, MeetingId);
+		String sql = "DELETE FROM Meeting WHERE id=?";
+		jdbcTemplate.update(sql, MeetingId);
 	}
 
 	@Override
