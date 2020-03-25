@@ -82,6 +82,7 @@ public class MeetingController {
 		ModelAndView modelAndView = new ModelAndView("meetingForm");
 		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
 		List<Contact> currentContactsList = contactDAO.listContacts(principal.getName());
+		List<Meeting> currentMeetingsList = meetingDAO.listMeetings(principal.getName());
 		List<MeetingType> meetingTypesList = meetingDAO.listMeetingTypes();
 		
 		modelAndView.addObject("title", "New Meeting");
@@ -89,7 +90,9 @@ public class MeetingController {
 		modelAndView.addObject("companiesList", currentCompaniesList);
 		modelAndView.addObject("contactsList", currentContactsList);
 		modelAndView.addObject("meetingTypesList", meetingTypesList);
-	
+
+		boolean canAddMeeting = true;
+		
 		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
 			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
 			//System.out.println("In Past - reject!");
@@ -100,9 +103,44 @@ public class MeetingController {
 			modelAndView.addObject("meetingError", "Meeting under 15 mins - Rejected");
 			
 			//prevent a meeting being longer than 24 hours
+		
+		} else if (meeting.getMeeting_end().isAfter(meeting.getMeeting_start().plusHours(12))){
+			modelAndView.addObject("meetingError", "Meetings of 12 hours or over not permitted - Rejected");
+
+			
+			
 			
 		} else {
-			//modelAndView.addObject("meetingError", "Inserted");
+			
+			for (Meeting existingMeeting : currentMeetingsList) {
+				if (
+						
+					//Is requested meeting start between start and end time of existing meeting?
+					(meeting.getMeeting_start().isAfter(existingMeeting.getMeeting_start()) &&
+				     meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_end())) ||
+					
+					//OR requested meeting end between start and end time of existing meeting?				   					
+					(meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_start()) &&
+				     meeting.getMeeting_end().isBefore(existingMeeting.getMeeting_end())) ||
+				
+					//OR requested meeting over-arching the existing meeting?				   					
+					(meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_start()) &&
+					 meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_end()))) {
+					
+					System.out.println("Start between: " + (meeting.getMeeting_start().isAfter(existingMeeting.getMeeting_start()) && (meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_end()))));
+					System.out.println("End between: " + (meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_start()) && (meeting.getMeeting_end().isBefore(existingMeeting.getMeeting_end()))));
+					System.out.println("Over-arching: " + (meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_start()) && meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_end())));
+					System.out.println("Attempt Meet Start: " + meeting.getMeeting_start());
+					System.out.println("Exist Meet Start: " + existingMeeting.getMeeting_start());
+					System.out.println("ExistMeet End: " + existingMeeting.getMeeting_end());
+					canAddMeeting = false;
+					modelAndView.addObject("meetingError", "Meeting already booked at that time range - Rejected");
+				}
+			}
+		} 
+		
+		if (canAddMeeting){
+			modelAndView.addObject("meetingError", "Inserted");
 			meetingDAO.insertMeeting(meeting, principal.getName());
 		}
 		

@@ -36,8 +36,8 @@
 
 				<tr>
 					<td><javatime:format value="${meeting.meeting_start}" pattern="dd-MM-yyyy" /></td>
-					<td><javatime:format value="${meeting.meeting_start}" pattern="hh:mm" /></td>
-					<td><javatime:format value="${meeting.meeting_end}" pattern="hh:mm" /></td>
+					<td><javatime:format value="${meeting.meeting_start}" pattern="HH:mm" /></td>
+					<td><javatime:format value="${meeting.meeting_end}" pattern="HH:mm" /></td>
 					<td>${meeting.contact_firstName}&#160;${meeting.contact_lastName}</td>
 					<td>${meeting.company_name}</td>
 					<td>${meeting.location}</td>

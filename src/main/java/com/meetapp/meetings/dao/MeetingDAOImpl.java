@@ -73,11 +73,6 @@ public class MeetingDAOImpl implements MeetingDAO {
 			}
 		});
 		Collections.sort(listMeeting);
-		
-		for(Meeting test : listMeeting) {
-			System.out.println("Start: " +test.getMeeting_start());
-		} 
-		
 		return listMeeting;
 	}
 
