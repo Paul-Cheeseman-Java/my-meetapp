@@ -119,6 +119,59 @@ public class MeetingDAOImpl implements MeetingDAO {
 		return listMeetingTypes;
 	}
 	
+
+	@Override
+	public List<Meeting> listUpcomingMeetings(String username, int range) {
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'AND "
+				+ "meeting.meeting_start >= CURDATE() AND meeting.meeting_start <= (CURDATE() + INTERVAL " + range + " DAY)";
+		
+		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
+
+			@Override
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("id"));
+				meeting.setCompany_id(rs.getInt("company_id"));
+				meeting.setContact_id(rs.getInt("contact_id"));
+				meeting.setLocation(rs.getString("location"));
+				meeting.setMeeting_type(rs.getInt("meeting_type"));
+				meeting.setMeeting_start(Meeting.joinDateTime(rs.getDate("meeting_start"), rs.getTime("meeting_start")));
+				meeting.setMeeting_end(Meeting.joinDateTime(rs.getDate("meeting_end"), rs.getTime("meeting_end")));
+				return meeting;
+			}
+		});
+		Collections.sort(listMeeting);
+		return listMeeting;
+	}
+
+
+	
+	
+	@Override
+	public List<Meeting> listPastMeetings(String username, int range) {
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'AND "
+				+ "meeting.meeting_start <= CURDATE() AND meeting.meeting_start >= (CURDATE() + INTERVAL +" + range + " DAY)";
+		
+		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
+
+			@Override
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("id"));
+				meeting.setCompany_id(rs.getInt("company_id"));
+				meeting.setContact_id(rs.getInt("contact_id"));
+				meeting.setLocation(rs.getString("location"));
+				meeting.setMeeting_type(rs.getInt("meeting_type"));
+				meeting.setMeeting_start(Meeting.joinDateTime(rs.getDate("meeting_start"), rs.getTime("meeting_start")));
+				meeting.setMeeting_end(Meeting.joinDateTime(rs.getDate("meeting_end"), rs.getTime("meeting_end")));
+				return meeting;
+			}
+		});
+		Collections.sort(listMeeting);
+		return listMeeting;
+	}
+
+	
 	
 	
 }

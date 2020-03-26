@@ -113,9 +113,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 	}
 
 	
-	//SELECT contact.company_id, count(*) FROM contact GROUP BY contact.company_id
-	//SELECT company_id FROM contact GROUP BY company_id;
-	
+
 	@Override
 	public List<String> getCompaniesUsed(String username) {
 		String sql = "SELECT company.name FROM contact inner join company on contact.company_id = company.id "

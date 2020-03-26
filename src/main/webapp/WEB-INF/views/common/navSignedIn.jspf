@@ -9,7 +9,7 @@
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="/MeetApp/">Home</a></li>
+          <li><a href="/MeetApp/welcome">Home</a></li>
           <li class="drop-down"><a href="#" onclick="return false">Meetings</a>
             <ul>
 	            <li><a href="/MeetApp/newMeeting">Add</a></li>

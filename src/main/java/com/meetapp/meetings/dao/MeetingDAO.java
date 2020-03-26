@@ -19,4 +19,9 @@ public interface MeetingDAO {
 	public List<MeetingType> listMeetingTypes();
 	
 	public List<Meeting> listMeetings(String username);
+	
+	public List<Meeting> listUpcomingMeetings(String username, int range);
+	
+	public List<Meeting> listPastMeetings(String username, int range);
+	
 }

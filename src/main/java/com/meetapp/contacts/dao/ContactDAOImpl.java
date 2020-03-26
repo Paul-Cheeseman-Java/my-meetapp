@@ -104,7 +104,6 @@ public class ContactDAOImpl implements ContactDAO {
 				if (rs.next()) {
 					//dummy object just to show row found
 					Contact contact = new Contact();
-					System.out.println("Contact Duplicated");
 					return contact;
 				}
 				return null;

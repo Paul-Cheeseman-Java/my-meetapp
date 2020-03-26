@@ -190,7 +190,7 @@ public class Meeting  implements Comparable<Meeting> {
 		String dateTime = inputDateWithSpace.concat(inputTime);
 		
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		System.out.println("DateTime: " + LocalDateTime.parse(dateTime, myFormatObj));
+		//System.out.println("DateTime: " + LocalDateTime.parse(dateTime, myFormatObj));
 		return LocalDateTime.parse(dateTime, myFormatObj);
 	}
 	

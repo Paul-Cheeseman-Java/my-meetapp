@@ -101,44 +101,29 @@ public class MeetingController {
 		} else if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
 			//System.out.println("Meeting Under 15 mins - reject!");
 			modelAndView.addObject("meetingError", "Meeting under 15 mins - Rejected");
-			
-			//prevent a meeting being longer than 24 hours
 		
 		} else if (meeting.getMeeting_end().isAfter(meeting.getMeeting_start().plusHours(12))){
 			modelAndView.addObject("meetingError", "Meetings of 12 hours or over not permitted - Rejected");
-
-			
-			
 			
 		} else {
 			
 			for (Meeting existingMeeting : currentMeetingsList) {
 				if (
-						
 					//Is requested meeting start between start and end time of existing meeting?
 					(meeting.getMeeting_start().isAfter(existingMeeting.getMeeting_start()) &&
 				     meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_end())) ||
-					
 					//OR requested meeting end between start and end time of existing meeting?				   					
 					(meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_start()) &&
 				     meeting.getMeeting_end().isBefore(existingMeeting.getMeeting_end())) ||
-				
 					//OR requested meeting over-arching the existing meeting?				   					
 					(meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_start()) &&
 					 meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_end()))) {
-					
-					System.out.println("Start between: " + (meeting.getMeeting_start().isAfter(existingMeeting.getMeeting_start()) && (meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_end()))));
-					System.out.println("End between: " + (meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_start()) && (meeting.getMeeting_end().isBefore(existingMeeting.getMeeting_end()))));
-					System.out.println("Over-arching: " + (meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_start()) && meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_end())));
-					System.out.println("Attempt Meet Start: " + meeting.getMeeting_start());
-					System.out.println("Exist Meet Start: " + existingMeeting.getMeeting_start());
-					System.out.println("ExistMeet End: " + existingMeeting.getMeeting_end());
+
 					canAddMeeting = false;
 					modelAndView.addObject("meetingError", "Meeting already booked at that time range - Rejected");
 				}
 			}
 		} 
-		
 		if (canAddMeeting){
 			modelAndView.addObject("meetingError", "Inserted");
 			meetingDAO.insertMeeting(meeting, principal.getName());
