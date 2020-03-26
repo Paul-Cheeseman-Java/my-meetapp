@@ -18,6 +18,7 @@ import com.meetapp.company.model.Company;
 import com.meetapp.contacts.dao.ContactDAO;
 import com.meetapp.meetings.dao.MeetingDAO;
 import com.meetapp.meetings.model.Meeting;
+import com.meetapp.meetings.model.MeetingType;
 
 @Controller
 public class LoginController {
@@ -32,7 +33,6 @@ public class LoginController {
 	private ContactDAO contactDAO;
 	
 	
-	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	    public String login() {
 	        return "login";
@@ -41,11 +41,17 @@ public class LoginController {
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String showWelcomePage(ModelMap model, HttpServletRequest request) {
 		
-		System.out.println("Passed id GET: " + request.getParameter("id"));
-
+		int vidConfMeetings = 0;
+		int voiceConfMeetings = 0;
+		int face2FaceMeetings = 0;
+		int totalMeetings = 0;
+		
 		int range;
 		List<Meeting> meetingList;
-		if (request.getParameter("id") != null) {
+		if (request.getParameter("id") == null) {
+			range = 1;
+		}
+		else {
 			try {
 				range = Integer.parseInt(request.getParameter("id"));
 			}
@@ -53,26 +59,43 @@ public class LoginController {
 			{
 				range = 1;
 			}
-			if (range == 1 || range == 7 || range == 14 || range == 30) {
-				meetingList = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range);									
-			}
-			else if (range == -1 || range == -5) {
-				meetingList = meetingDAO.listPastMeetings(getLoggedInUserName(), range);									
-			}
-			else {
-				meetingList = meetingDAO.listMeetings(getLoggedInUserName());									
-			}
+		}
+		if (range == 1 || range == 7 || range == 14 || range == 30) {
+				meetingList = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range);
+				//Not happy with hardcoded values.........
+				face2FaceMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range, 1);
+				vidConfMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range, 2);
+				voiceConfMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range, 3);
+		}
+		else if (range == -1 || range == -5) {
+			meetingList = meetingDAO.listPastMeetings(getLoggedInUserName(), range);
+			//Not happy with hardcoded values.........
+			face2FaceMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), range, 1);
+			vidConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), range, 2);
+			voiceConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), range, 3);
 		}
 		else {
-			meetingList = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), 1);					
+			meetingList = meetingDAO.listMeetings(getLoggedInUserName());
+			face2FaceMeetings = meetingDAO.listMeetings(getLoggedInUserName(), 1);
+			vidConfMeetings = meetingDAO.listMeetings(getLoggedInUserName(), 2);
+			voiceConfMeetings = meetingDAO.listMeetings(getLoggedInUserName(), 3);					
 		}
-	
+		
 		for (Meeting meeting: meetingList) {
 			meeting.setCompany_name(companyDAO.getCompany(meeting.getCompany_id()).getName());
 			meeting.setContact_firstName(contactDAO.getContact(meeting.getContact_id()).getFirstName());
 			meeting.setContact_lastName(contactDAO.getContact(meeting.getContact_id()).getLastName());
 		}
+		
 		Meeting meeting = new Meeting();
+		
+		System.out.println("face2FaceMeetings" + face2FaceMeetings);
+		System.out.println("vidConfMeetings" +  vidConfMeetings);
+		System.out.println("voiceConfMeetings"+ voiceConfMeetings);
+				
+		model.addAttribute("face2FaceMeetings", face2FaceMeetings);
+		model.addAttribute("vidConfMeetings", vidConfMeetings);
+		model.addAttribute("voiceConfMeetings", voiceConfMeetings);
 		model.addAttribute("meeting", meeting);
 		model.addAttribute("meetingList", meetingList);
 		model.addAttribute("name", getLoggedInUserName());

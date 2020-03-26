@@ -24,9 +24,10 @@
     			<a class="dropdown-item" href="/MeetApp/welcome?id=7">Next 7 days</a>
     			<a class="dropdown-item" href="/MeetApp/welcome?id=14">Next 14 days</a>
     			<a class="dropdown-item" href="/MeetApp/welcome?id=30">Next 30 days</a>
+    			<a class="dropdown-item" href="/MeetApp/welcome?id=0">All</a>
     			<div class="dropdown-divider"></div>
     			<a class="dropdown-item" href="/MeetApp/welcome?id=-1">Yesterday</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=0">All</a>
+    			<a class="dropdown-item" href="/MeetApp/welcome?id=-5">Last 5 Days</a>
   			</div>
 		</div>
         
@@ -61,23 +62,23 @@
         
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">274</span>
-            <p>Clients</p>
+            <span data-toggle="counter-up">${face2FaceMeetings}</span>
+            <p>Face to Face</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">421</span>
-            <p>Projects</p>
+            <span data-toggle="counter-up">${vidConfMeetings}</span>
+            <p>Video Conferences</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,364</span>
-            <p>Hours Of Support</p>
+            <span data-toggle="counter-up">${voiceConfMeetings}</span>
+            <p>Voice Conferences</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">18</span>
-            <p>Hard Workers</p>
+            <span data-toggle="counter-up">${face2FaceMeetings+vidConfMeetings+voiceConfMeetings}</span>
+            <p>Total</p>
           </div>
   
         </div>

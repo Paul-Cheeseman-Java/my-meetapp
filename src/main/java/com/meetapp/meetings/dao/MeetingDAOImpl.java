@@ -76,6 +76,25 @@ public class MeetingDAOImpl implements MeetingDAO {
 		return listMeeting;
 	}
 
+
+	
+	@Override
+	public int listMeetings(String username, int meetingType) {
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "' AND meeting_type = '" +meetingType + "'";
+		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
+
+			@Override
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("id"));
+				return meeting;
+			}
+		});
+		return listMeeting.size();
+	}
+
+	
+	
 	
 	@Override
 	public Meeting getMeeting(int meetingId) {
@@ -122,7 +141,7 @@ public class MeetingDAOImpl implements MeetingDAO {
 
 	@Override
 	public List<Meeting> listUpcomingMeetings(String username, int range) {
-		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'AND "
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "' AND "
 				+ "meeting.meeting_start >= CURDATE() AND meeting.meeting_start <= (CURDATE() + INTERVAL " + range + " DAY)";
 		
 		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
@@ -144,13 +163,28 @@ public class MeetingDAOImpl implements MeetingDAO {
 		return listMeeting;
 	}
 
-
+	
+	@Override
+	public int listUpcomingMeetings(String username, int range, int meetingType) {
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "' AND "
+				+ "meeting.meeting_start >= CURDATE() AND meeting_type = " +meetingType + " AND meeting.meeting_start <= (CURDATE() + INTERVAL " + range + " DAY)";
+		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
+			@Override
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("id"));
+				return meeting;
+			}
+		});
+		return listMeeting.size();
+	}
+	
 	
 	
 	@Override
 	public List<Meeting> listPastMeetings(String username, int range) {
-		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'AND "
-				+ "meeting.meeting_start <= CURDATE() AND meeting.meeting_start >= (CURDATE() + INTERVAL +" + range + " DAY)";
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "' AND "
+				+ "meeting.meeting_start <= CURDATE() AND meeting.meeting_start >= (CURDATE() + INTERVAL " + range + " DAY)";
 		
 		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
 
@@ -171,7 +205,23 @@ public class MeetingDAOImpl implements MeetingDAO {
 		return listMeeting;
 	}
 
-	
+
+	@Override
+	public int listPastMeetings(String username, int range, int meetingType) {
+		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "'AND "
+				+ "meeting.meeting_start <= CURDATE() AND meeting_type = " +meetingType + "  AND meeting.meeting_start >= (CURDATE() + INTERVAL " + range + " DAY)";
+		
+		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
+			@Override
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("id"));
+				return meeting;
+			}
+		});
+		return listMeeting.size();
+	}
+
 	
 	
 }
