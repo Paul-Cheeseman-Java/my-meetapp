@@ -9,10 +9,15 @@
 }
 
 .bootstrap-datetimepicker-widget table th{
-  color:#ff0000 !important;
+  color:#ff0000 !important;;
   font-size: 0.8em;
 }
 */
+
+
+.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle{
+	background: #fff;
+}
 
 
 #welcome-page {
