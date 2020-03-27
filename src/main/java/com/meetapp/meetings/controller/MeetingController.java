@@ -97,13 +97,16 @@ public class MeetingController {
 			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
 			//System.out.println("In Past - reject!");
 			modelAndView.addObject("meetingError", "Meeting in the past - Rejected");
+			canAddMeeting = false;
 			
 		} else if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
 			//System.out.println("Meeting Under 15 mins - reject!");
 			modelAndView.addObject("meetingError", "Meeting under 15 mins - Rejected");
+			canAddMeeting = false;
 		
 		} else if (meeting.getMeeting_end().isAfter(meeting.getMeeting_start().plusHours(12))){
 			modelAndView.addObject("meetingError", "Meetings of 12 hours or over not permitted - Rejected");
+			canAddMeeting = false;
 			
 		} else {
 			
