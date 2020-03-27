@@ -14,8 +14,22 @@
 }
 */
 
+
+#welcome-page {
+    width: 100%;
+    position: relative;
+    background: url(../img/intro-bg.png) center bottom no-repeat;
+    background-size: cover;
+    padding: 15px 0 120px 0;
+}
+
 #welcomeHeader{
 	padding-top:0.75em;
+	font-style:italic;
+	color: #ffffff;
+}
+
+#welcomeTitle{
 	text-decoration: underline;
 }
 
@@ -79,7 +93,6 @@ formcontrol{
 
 #meeting-stats {
 	color: #FFFFFF;
-	background: #004a99;
 }
 
 #meeting-stats .counters {
@@ -95,7 +108,7 @@ formcontrol{
 }
 
 
-#meeting-stats .section-header h3 {
+.section-header h3 {
 	padding: 20px 0 0 0;
 	margin: 20px 0 0 0;
     color: #FFFFFF;

@@ -41,9 +41,9 @@ public class LoginController {
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	public String showWelcomePage(ModelMap model, HttpServletRequest request) {
 		
-		int vidConfMeetings = 0;
-		int voiceConfMeetings = 0;
-		int face2FaceMeetings = 0;
+		List<Meeting> vidConfMeetings;
+		List<Meeting>voiceConfMeetings;
+		List<Meeting>face2FaceMeetings;
 		int totalMeetings = 0;
 		
 		int range;
@@ -67,6 +67,14 @@ public class LoginController {
 				vidConfMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range, 2);
 				voiceConfMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), range, 3);
 		}
+		else if (range == 10) {
+			meetingList = meetingDAO.listUpcomingMeetings(getLoggedInUserName());
+			//Not happy with hardcoded values.........
+			face2FaceMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), 1);
+			vidConfMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), 2);
+			voiceConfMeetings = meetingDAO.listUpcomingMeetings(getLoggedInUserName(), 3);
+		}
+		
 		else if (range == -1 || range == -5) {
 			meetingList = meetingDAO.listPastMeetings(getLoggedInUserName(), range);
 			//Not happy with hardcoded values.........
@@ -74,6 +82,15 @@ public class LoginController {
 			vidConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), range, 2);
 			voiceConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), range, 3);
 		}
+		
+		else if (range == -10) {
+			meetingList = meetingDAO.listPastMeetings(getLoggedInUserName());
+			//Not happy with hardcoded values.........
+			face2FaceMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), 1);
+			vidConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), 2);
+			voiceConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), 3);
+		}
+		
 		else {
 			meetingList = meetingDAO.listMeetings(getLoggedInUserName());
 			face2FaceMeetings = meetingDAO.listMeetings(getLoggedInUserName(), 1);
@@ -89,13 +106,9 @@ public class LoginController {
 		
 		Meeting meeting = new Meeting();
 		
-		System.out.println("face2FaceMeetings" + face2FaceMeetings);
-		System.out.println("vidConfMeetings" +  vidConfMeetings);
-		System.out.println("voiceConfMeetings"+ voiceConfMeetings);
-				
-		model.addAttribute("face2FaceMeetings", face2FaceMeetings);
-		model.addAttribute("vidConfMeetings", vidConfMeetings);
-		model.addAttribute("voiceConfMeetings", voiceConfMeetings);
+		model.addAttribute("face2FaceMeetings", face2FaceMeetings.size());
+		model.addAttribute("vidConfMeetings", vidConfMeetings.size());
+		model.addAttribute("voiceConfMeetings", voiceConfMeetings.size());
 		model.addAttribute("meeting", meeting);
 		model.addAttribute("meetingList", meetingList);
 		model.addAttribute("name", getLoggedInUserName());

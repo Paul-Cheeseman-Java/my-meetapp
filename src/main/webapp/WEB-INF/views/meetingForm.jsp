@@ -54,7 +54,7 @@
 					    	</c:when>    
     						<c:otherwise>
              					<div>
-	           						 <form:select id = "companyDropdownList" path="company_id">
+	           						 <form:select id = "companyDropdownList" path="company_id" class="selectpicker">
              							<c:forEach items="${companiesList}" var="theCompany">
 											<!-- Setting the company to correct value on dropdown -->
              								<c:set var = "currentCompany" scope = "session" value = "${theCompany.id}"/>
@@ -81,7 +81,7 @@
 					    	</c:when>    
     						<c:otherwise>
              					<div>
-             						<form:select id = "contactDropdownList" path="contact_id">
+             						<form:select id = "contactDropdownList" path="contact_id" class="selectpicker">
              							<c:forEach items="${contactsList}" var="theContact">
 											<!-- Setting the company to correct value on dropdown -->
              								<c:set var = "currentContact" scope = "session" value = "${theContact.id}"/>
@@ -103,7 +103,7 @@
                 	
                 	 <div class="form-group col-md-3 text-center">
              			<label>Select Type:</label>
-						<form:select id = "meetingTypeDropdownList" path="meeting_type">
+						<form:select id = "meetingTypeDropdownList" path="meeting_type" class="selectpicker">
 							<c:forEach items="${meetingTypesList}" var="theMeetingType">
 								<!-- Setting the company to correct value on dropdown -->
        							<c:set var = "currentMeetingType" scope = "session" value = "${theMeetingType.id}"/>
@@ -121,14 +121,14 @@
                 	</div>
                 	<div class="form-group col-md-3 text-center">
              			<label>Location:</label>
-                    	<form:input path="location" type="text" placeholder="location" required="required"/>
+                    	<form:input class="form-control" path="location" type="text" placeholder="location" required="required"/>
                 	</div>
 				</div>
                
               	<div class="form-row">
               		<div class="form-group col-md-12">
              			<label>Notes:</label>
-                		<form:textarea path="notes"	cols="120"/>
+                		<form:textarea class="form-control" path="notes"	cols="120"/>
      				</div>
 				</div>           
                

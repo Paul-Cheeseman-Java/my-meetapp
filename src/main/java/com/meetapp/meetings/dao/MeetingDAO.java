@@ -20,15 +20,19 @@ public interface MeetingDAO {
 	
 	public List<Meeting> listMeetings(String username);
 
-	public int listMeetings(String username, int range);
+	public List<Meeting> listMeetings(String username, int meetype);
+	
+	public List<Meeting> listUpcomingMeetings(String username);
+	
+	public List<Meeting> listPastMeetings(String username);
 	
 	public List<Meeting> listUpcomingMeetings(String username, int range);
 	
 	public List<Meeting> listPastMeetings(String username, int range);
 	
-	public int listUpcomingMeetings(String username, int range, int meetype);
+	public List<Meeting> listUpcomingMeetings(String username, int range, int meetype);
 	
-	public int listPastMeetings(String username, int range, int meetype);
+	public List<Meeting> listPastMeetings(String username, int range, int meetype);
 	
 
 	

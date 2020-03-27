@@ -54,7 +54,7 @@
 					    	</c:when>    
     						<c:otherwise>
              					<div>
-	           						 <form:select id = "companyDropdownList" path="company">
+	           						 <form:select id = "companyDropdownList" path="company"  class="selectpicker">
              							<c:forEach items="${companiesList}" var="theCompany">
 											<!-- Setting the company to correct value on dropdown -->
              								<c:set var = "currentCompany" scope = "session" value = "${theCompany.id}"/>
