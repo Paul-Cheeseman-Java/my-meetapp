@@ -35,11 +35,10 @@
                   	</div>
                 </div>
                 <div class="form-row">
-                	<div class="form-group col-md-6">
-             			<label>Select Company Type:</label>
-             			<div>
-             				<form:select id = "companyTypeList" path="companyType">
-             				<c:forEach items="${companyTypesList}" var="theCompanyType">
+                	<div class="form-group col-md-4">
+           				<form:select id = "companyTypeList" path="companyType" class="selectpicker">
+           				<form:label path="name" for="name">Name:</form:label>
+           				<c:forEach items="${companyTypesList}" var="theCompanyType">
 												
 								<!-- Setting the company to correct value on dropdown -->
              					<c:set var = "currentType" scope = "session" value = "${theCompanyType.id}"/>
@@ -55,9 +54,12 @@
                 				</c:choose>
               				</c:forEach>
              				</form:select>
-             			</div>  		
-                	</div>
-               	</div>
+	                	</div>
+    	           	</div>
+        		</div>       	
+               	
+               	
+               	
                 <div class="text-center"><button class="btn btn-light" type="submit" title="${buttontext}">${buttontext}</button></div>
             </form:form>
 		</div>
