@@ -8,7 +8,7 @@
     <bean id="myDataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-       <property name="url" value="jdbc:mysql://localhost:3306/meeting_organiserdb" />
+       <property name="url" value="jdbc:mysql://localhost:3306/meeting_organiserdb?serverTimezone=UTC" />
        <property name="username" value="Demo_User" />
        <property name="password" value="demo" />
     </bean>
