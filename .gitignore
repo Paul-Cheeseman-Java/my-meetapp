@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-/target/
-=======
 # Eclipse
 .classpath
 .project
 .settings/
 
-#Ignore any comipled Java files
+#Ignore any compiled Java files
 *.class
 
->>>>>>> refs/remotes/github/master
