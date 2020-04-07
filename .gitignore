@@ -6,3 +6,4 @@
 #Ignore any compiled Java files
 *.class
 
+/target/
