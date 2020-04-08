@@ -59,7 +59,7 @@
 					<td>${meeting.company_name}</td>
 					<td>${meeting.location}</td>
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-warning"	href="/MeetApp/editMeeting?id=${meeting.id}">Details</a> 
+						<a type="button" class="btn btn-warning"	href="editMeeting?id=${meeting.id}">Details</a> 
 					</td>
 					</tr>
 			</c:forEach>

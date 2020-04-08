@@ -33,7 +33,7 @@
 					<td>${company.name}</td>
 					<td>${company.companyTypeStr}</td>
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-warning"	href="/MeetApp/editCompany?id=${company.id}">Edit</a> 
+						<a type="button" class="btn btn-warning"	href="editCompany?id=${company.id}">Edit</a> 
 						<c:forEach  items="${companiesUsed}" var="usedComp">
   							<c:if test="${usedComp eq company.name}">
     							<c:set var="contains" value="true" />
@@ -41,10 +41,10 @@
 						</c:forEach>
 						<c:choose>
 							<c:when test="${contains eq true}">
-								<a type="button"class="btn btn-danger" href="/MeetApp/deleteCompany?id=${company.id}">Delete</a>
+								<a type="button"class="btn btn-danger" href="deleteCompany?id=${company.id}">Delete</a>
    							</c:when>
         					<c:otherwise>
-								<a type="button"class="btn btn-success" href="/MeetApp/deleteCompany?id=${company.id}">Delete</a>
+								<a type="button"class="btn btn-success" href="deleteCompany?id=${company.id}">Delete</a>
         					</c:otherwise>
    						</c:choose>
 
@@ -54,7 +54,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a type="button" class="btn btn-success" href="/MeetApp/newCompany">Add</a>
+		<a type="button" class="btn btn-success" href="newCompany">Add</a>
 	</div>
 
   	</div>

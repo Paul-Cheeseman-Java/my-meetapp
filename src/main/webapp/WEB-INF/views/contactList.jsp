@@ -36,7 +36,7 @@
 
 
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-warning"	href="/MeetApp/editContact?id=${contact.id}">Edit</a>
+						<a type="button" class="btn btn-warning"	href="editContact?id=${contact.id}">Edit</a>
 
 						<c:set var="contains" value="false" />
 						<c:forEach  items="${contactsUsed}" var="usedContact">
@@ -49,10 +49,10 @@
 						</c:forEach>
 						<c:choose>
 							<c:when test="${contains eq true}">
-								<a type="button"class="btn btn-danger" href="/MeetApp/deleteContact?id=${contact.id}">Delete</a>
+								<a type="button"class="btn btn-danger" href="deleteContact?id=${contact.id}">Delete</a>
 							</c:when>
        						<c:otherwise>
-								<a type="button"class="btn btn-success" href="/MeetApp/deleteContact?id=${contact.id}">Delete</a>
+								<a type="button"class="btn btn-success" href="deleteContact?id=${contact.id}">Delete</a>
        						</c:otherwise>
 						</c:choose>
 						
@@ -62,7 +62,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a type="button" class="btn btn-success" href="/MeetApp/newContact">Add</a>
+		<a type="button" class="btn btn-success" href="newContact">Add</a>
 	</div>
   	</div>
   </section>
