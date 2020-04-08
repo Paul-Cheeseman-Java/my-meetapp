@@ -22,17 +22,17 @@
         <div class="dropdown show">
   			<a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Schedule Range</a>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=-5">All Upcoming</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=30">Next 30 days</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=14">Next 14 days</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=7">Next 7 days</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=1">Today</a>
+    			<a class="dropdown-item" href="welcome?id=-5">All Upcoming</a>
+    			<a class="dropdown-item" href="welcome?id=30">Next 30 days</a>
+    			<a class="dropdown-item" href="welcome?id=14">Next 14 days</a>
+    			<a class="dropdown-item" href="welcome?id=7">Next 7 days</a>
+    			<a class="dropdown-item" href="welcome?id=1">Today</a>
     			<div class="dropdown-divider"></div>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=-1">Yesterday</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=-5">Last 5 Days</a>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=-5">All Previous</a>
+    			<a class="dropdown-item" href="welcome?id=-1">Yesterday</a>
+    			<a class="dropdown-item" href="welcome?id=-5">Last 5 Days</a>
+    			<a class="dropdown-item" href="welcome?id=-5">All Previous</a>
     			<div class="dropdown-divider"></div>
-    			<a class="dropdown-item" href="/MeetApp/welcome?id=0">All</a>
+    			<a class="dropdown-item" href="welcome?id=0">All</a>
   			</div>
 		</div>
         
