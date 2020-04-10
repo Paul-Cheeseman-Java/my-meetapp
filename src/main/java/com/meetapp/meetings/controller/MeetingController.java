@@ -128,7 +128,6 @@ public class MeetingController {
 			}
 		} 
 		if (canAddMeeting){
-			modelAndView.addObject("meetingError", "Inserted");
 			meetingDAO.insertMeeting(meeting, principal.getName());
 		}
 		

@@ -15,10 +15,12 @@
 
 	<div class="form">
 	        
-			<c:if test="${meetingError ne null}">
-				<div class="formErrorMsg"> ${meetingError}</div>
-			</c:if>
+
             <form:form method="post" role="form" commandName="meeting">
+				<c:if test="${meetingError ne null}">
+					<div class="formErrorMsg"> ${meetingError}</div>
+				</c:if>
+
             	<div class="form-row">
                		<div class="form-group col-md-3 offset-md-3 text-center">
              			<label>Select Company:</label>

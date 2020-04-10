@@ -35,11 +35,6 @@ public class ContactController {
 	public String contactList(Model model, Principal principal) {
 		List<Contact> allContacts = contactDAO.listContacts(principal.getName());
 		List<String> getContactsUsed = contactDAO.getContactsUsed(principal.getName());
-		
-		for(String item : getContactsUsed) {
-			System.out.println("Contact " + item);
-		}
-		
 		model.addAttribute("contactsUsed", getContactsUsed);
 		model.addAttribute("contactList", allContacts);
 		return "contactList";
@@ -73,9 +68,13 @@ public class ContactController {
 		}
 		else {
 			contactDAO.insertContact(contact, principal.getName());
-			ModelAndView modelAndView = new ModelAndView("contactList");
-			List<Contact> allContacts = contactDAO.listContacts(principal.getName());
-			modelAndView.addObject("contactList", allContacts);
+			ModelAndView modelAndView = new ModelAndView("redirect:/contactList");
+
+			//ModelAndView modelAndView = new ModelAndView("contactList");
+			//List<Contact> allContacts = contactDAO.listContacts(principal.getName());
+			//List<String> getContactsUsed = contactDAO.getContactsUsed(principal.getName());
+			//model.addObject("contactsUsed", getContactsUsed);
+			//modelAndView.addObject("contactList", allContacts);
 			return modelAndView;			
 		}
 	}
