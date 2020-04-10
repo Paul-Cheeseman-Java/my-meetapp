@@ -176,7 +176,7 @@ public class MeetingDAOImpl implements MeetingDAO {
 	@Override
 	public List<Meeting> listUpcomingMeetings(String username) {
 		String sql = "SELECT * FROM Meeting WHERE username = '" + username + "' AND "
-				+ "meeting.meeting_start >= CURDATE() AND meeting.meeting_start <= (CURDATE()";
+				+ "meeting.meeting_start >= CURDATE() AND meeting.meeting_start <= (CURDATE())";
 		
 		List<Meeting> listMeeting = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
 
