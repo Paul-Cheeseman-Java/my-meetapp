@@ -1,6 +1,5 @@
 package com.meetapp.contacts.controller;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -8,17 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.meetapp.company.dao.CompanyDAO;
 import com.meetapp.company.model.Company;
-import com.meetapp.company.model.CompanyType;
 import com.meetapp.contacts.dao.ContactDAO;
 import com.meetapp.contacts.model.Contact;
-import com.meetapp.login.LoginController;
 
 
 @Controller

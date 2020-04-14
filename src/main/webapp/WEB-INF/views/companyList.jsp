@@ -33,7 +33,7 @@
 					<td>${company.name}</td>
 					<td>${company.companyTypeStr}</td>
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-warning"	href="editCompany?id=${company.id}">Edit</a> 
+						<a type="button" class="btn btn-light"	href="editCompany?id=${company.id}">Edit</a> 
 						<c:forEach  items="${companiesUsed}" var="usedComp">
   							<c:if test="${usedComp eq company.name}">
     							<c:set var="contains" value="true" />
@@ -54,7 +54,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a type="button" class="btn btn-success" href="newCompany">Add</a>
+		<a type="button" class="btn btn-light" href="newCompany">Add</a>
 	</div>
 
   	</div>

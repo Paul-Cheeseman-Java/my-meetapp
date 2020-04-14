@@ -1,6 +1,5 @@
 package com.meetapp.company.model;
 
-import com.meetapp.contacts.model.Contact;
 
 public class Company implements Comparable<Company>{
 	private int id;

@@ -2,10 +2,8 @@ package com.meetapp.meetings.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.meetapp.company.model.CompanyType;
 import com.meetapp.meetings.model.Meeting;
 import com.meetapp.meetings.model.MeetingType;
 

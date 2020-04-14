@@ -1,9 +1,6 @@
 package com.meetapp.company.dao;
 
 import java.util.List;
-
-import javax.sql.DataSource;
-
 import com.meetapp.company.model.Company;
 import com.meetapp.company.model.CompanyType;
 

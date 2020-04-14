@@ -6,11 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
-
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.meetapp.company.model.Company;
 
 public class Meeting  implements Comparable<Meeting> {
 

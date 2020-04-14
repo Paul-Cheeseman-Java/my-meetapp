@@ -1,19 +1,13 @@
 package com.meetapp.meetings.controller;
 
-import java.io.IOException;
 import java.security.Principal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Enumeration;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +16,6 @@ import com.meetapp.company.dao.CompanyDAO;
 import com.meetapp.company.model.Company;
 import com.meetapp.contacts.dao.ContactDAO;
 import com.meetapp.contacts.model.Contact;
-import com.meetapp.login.LoginController;
 import com.meetapp.meetings.dao.MeetingDAO;
 import com.meetapp.meetings.model.Meeting;
 import com.meetapp.meetings.model.MeetingType;

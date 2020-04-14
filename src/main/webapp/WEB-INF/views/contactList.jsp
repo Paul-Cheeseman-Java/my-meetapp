@@ -36,7 +36,7 @@
 
 
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-warning"	href="editContact?id=${contact.id}">Edit</a>
+						<a type="button" class="btn btn-light"	href="editContact?id=${contact.id}">Edit</a>
 
 						<c:set var="contains" value="false" />
 						<c:forEach  items="${contactsUsed}" var="usedContact">
@@ -62,7 +62,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a type="button" class="btn btn-success" href="newContact">Add</a>
+		<a type="button" class="btn btn-light" href="newContact">Add</a>
 	</div>
   	</div>
   </section>

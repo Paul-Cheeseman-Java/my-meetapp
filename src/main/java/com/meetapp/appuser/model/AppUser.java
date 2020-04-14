@@ -1,6 +1,5 @@
 package com.meetapp.appuser.model;
 
-
 public class AppUser {
 
 	private int id;

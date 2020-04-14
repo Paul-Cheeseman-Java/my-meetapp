@@ -1,10 +1,8 @@
 package com.meetapp.login;
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.meetapp.company.dao.CompanyDAO;
-import com.meetapp.company.model.Company;
 import com.meetapp.contacts.dao.ContactDAO;
 import com.meetapp.meetings.dao.MeetingDAO;
 import com.meetapp.meetings.model.Meeting;
-import com.meetapp.meetings.model.MeetingType;
 
 @Controller
 public class LoginController {
@@ -44,8 +40,7 @@ public class LoginController {
 		List<Meeting> vidConfMeetings;
 		List<Meeting>voiceConfMeetings;
 		List<Meeting>face2FaceMeetings;
-		int totalMeetings = 0;
-		
+	
 		int range;
 		List<Meeting> meetingList;
 		if (request.getParameter("id") == null) {
