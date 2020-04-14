@@ -20,6 +20,7 @@
 }
 
 
+
 #welcome-page {
     width: 100%;
     position: relative;
@@ -27,6 +28,10 @@
     background-size: cover;
     padding: 15px 0 120px 0;
 }
+
+
+
+
 
 #welcomeHeader{
 	padding-top:0.75em;
@@ -99,6 +104,7 @@ formcontrol{
 
 #meeting-stats {
 	color: #FFFFFF;
+	background: url(../img/intro-bg.png) center bottom no-repeat;
 }
 
 #meeting-stats .counters {

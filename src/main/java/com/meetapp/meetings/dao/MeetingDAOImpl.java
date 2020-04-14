@@ -290,6 +290,27 @@ public class MeetingDAOImpl implements MeetingDAO {
 		return listMeeting;
 	}
 
+
+	@Override
+	public int countAllMeetingsForType(String meetingType) {
+		String sql = "SELECT * FROM meeting inner join meeting_type on meeting.meeting_type = "
+				+ "meeting_type.id WHERE meeting_type.type = '" + meetingType + "'";
+	
+		List<Meeting> listMeetings = jdbcTemplate.query(sql, new RowMapper<Meeting>() {
+			@Override
+			public Meeting mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Meeting meeting = new Meeting();
+				meeting.setId(rs.getInt("meeting.id"));
+				return meeting;
+			}
+		});
+		return listMeetings.size();
+	}
+
+	
+	
+	
+	
 	
 	
 }

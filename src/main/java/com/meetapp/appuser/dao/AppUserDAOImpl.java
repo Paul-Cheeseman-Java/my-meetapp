@@ -47,14 +47,6 @@ public class AppUserDAOImpl implements AppUserDAO{
 			}
 		});
 	}
-		
-	/*
-	@Override
-	public boolean validateUser(AppUser user) {
-
-		return true;
-	}
-	*/
 	
 
 }

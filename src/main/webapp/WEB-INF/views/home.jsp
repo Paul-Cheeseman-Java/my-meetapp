@@ -24,11 +24,6 @@
     <section id="about">
       <div class="container">
 
-        <header class="section-header">
-          <h3>MeetApp Benefits</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </header>
-
         <div class="row about-container">
 
           <div class="col-lg-6 content order-lg-1 order-2">
@@ -67,27 +62,27 @@
     <section id="meeting-stats" class="wow fadeIn">
       <div class="container">
         <header class="section-header">
-          <h3>Your Meeting Stats</h3>
+          <h3>Meetings Managed by MeetApp</h3>
         </header>
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">274</span>
-            <p>Clients</p>
+            <span data-toggle="counter-up">${allFace2Face}</span>
+            <p>Face to Face</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">421</span>
-            <p>Projects</p>
+            <span data-toggle="counter-up">${allVidConf}</span>
+            <p>Video Conferences</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,364</span>
-            <p>Hours Of Support</p>
+            <span data-toggle="counter-up">${allVoiceConf}</span>
+            <p>Voice Conferences</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">18</span>
-            <p>Hard Workers</p>
+            <span data-toggle="counter-up">${total}</span>
+            <p>Total</p>
           </div>
   
         </div>

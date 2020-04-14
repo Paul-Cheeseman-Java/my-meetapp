@@ -20,4 +20,5 @@ public interface ContactDAO {
 	public List<Contact> listContacts(String username);
 	
 	public List<String> getContactsUsed(String username);
+		
 }

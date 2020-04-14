@@ -33,7 +33,7 @@ public interface MeetingDAO {
 	public List<Meeting> listUpcomingMeetings(String username, int range, int meetype);
 	
 	public List<Meeting> listPastMeetings(String username, int range, int meetype);
-	
 
+	public int countAllMeetingsForType(String meetingType);
 	
 }
