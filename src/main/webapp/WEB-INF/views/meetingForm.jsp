@@ -123,7 +123,7 @@
                 	</div>
                 	<div class="form-group col-md-3 text-center">
              			<label>Location:</label>
-                    	<form:input class="form-control" path="location" type="text" placeholder="location" required="required"/>
+                    	<form:input class="form-control" path="location" type="text" placeholder="None" value="None"/>
                 	</div>
 				</div>
                

@@ -122,6 +122,15 @@ public class MeetingController {
 		} 
 		if (canAddMeeting){
 			meetingDAO.insertMeeting(meeting, principal.getName());
+		
+			modelAndView = new ModelAndView("meetingList");
+			List<Meeting> allmeetings = meetingDAO.listMeetings(principal.getName());
+			for (Meeting aMeeting: allmeetings) {
+				aMeeting.setCompany_name(companyDAO.getCompany(aMeeting.getCompany_id()).getName());
+				aMeeting.setContact_firstName(contactDAO.getContact(aMeeting.getContact_id()).getFirstName());
+				aMeeting.setContact_lastName(contactDAO.getContact(aMeeting.getContact_id()).getLastName());
+			}
+			modelAndView.addObject("meetingList", allmeetings);
 		}
 		
 		return modelAndView;

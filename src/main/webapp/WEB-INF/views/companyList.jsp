@@ -13,9 +13,7 @@
   			Company List
   		</div>
 	<div class=generalText>
-		When delete is red, it means that it still has contacts and/or meetings associated with it. Deleting the company now will remove
-		all contacts and/or meetings associated with that company. When delete is green it means there are
-		no associated records. 
+		When delete is red it means that the company still has contacts (and maybe meetings) associated with it, deleting the company will remove all contacts (and meetings) associated with that company. When delete is green it means there are no associated records so only the company will be deleted. 
 	</div>		
 	<table class="table table-striped">
 		<thead>

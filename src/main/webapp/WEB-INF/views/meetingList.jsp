@@ -13,11 +13,7 @@
   		<div class="title">
   			Meeting List
   		</div>
-	<div class=generalText>
-		When delete is red, it means that it still has contacts and/or meetings associated with it. Deleting the company now will remove
-		all contacts and/or meetings associated with that company. When delete is green it means there are
-		no associated records. 
-	</div>		
+	
 	<table class="table table-striped">
 		<thead>
 			<tr id="whitTableHeading">
