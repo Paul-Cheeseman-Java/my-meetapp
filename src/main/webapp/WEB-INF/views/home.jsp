@@ -11,8 +11,8 @@
       <div class="intro-info">
         <h2>Managing your<br><span>meetings</span><br>making life easier!</h2>
         <div>
-          <a href="#about" class="btn-get-started scrollto">Next 7 Days</a>
-          <a href="#services" class="btn-services scrollto">Add a Meeting</a>
+          <a href="welcome" class="btn-get-started scrollto">Sign In</a>
+          <a href="register" class="btn-services scrollto">Sign Up</a>
         </div>
       </div>
 
@@ -28,24 +28,25 @@
 
           <div class="col-lg-6 content order-lg-1 order-2">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Welcome to MeetApp! A meeting management system that enables you to manage your contacts and the meetings you have with them.   
             </p>
 
             <div class="icon-box wow fadeInUp">
               <div class="icon"><i class="fa fa-address-book-o"></i></div>
-              <h4 class="title"><a href="">Store all contacts</a></h4>
-              <p class="description">All your contacts stored in one place, linked to all associated previous and future meetings.</p>
+              <h4 class="title"><a href="">Contacts and Meetings in one place</a></h4>
+              <p class="description">All your contacts and meetings stored in one place, providing a one stop shop for time management.</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-              <div class="icon"><i class="fa fa-handshake-o"></i></div>
-              <h4 class="title"><a href="">Seal the deals!</a></h4>
-              <p class="description">Never miss a meeting and retain information from them, to staying organised and ahead of the game helping you get those deal done.</p>
-            </div>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-pencil-square-o"></i></div>
               <h4 class="title"><a href="">Store information from meetings</a></h4>
-              <p class="description">Make and store notes from the meeting you've attended, helping you track progress of problems and accountability of issues.  </p>
+              <p class="description">Make and retains notes from the meeting you've attended, helping you track progress of problems and accountability of issues.  </p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-handshake-o"></i></div>
+              <h4 class="title"><a href="">Seal the deals!</a></h4>
+              <p class="description">MeetApp ensures you stay organised and ahead of the game, helping you perform professionally and get those deal done.</p>
             </div>
 
           </div>

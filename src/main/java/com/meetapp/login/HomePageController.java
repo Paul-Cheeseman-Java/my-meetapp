@@ -31,4 +31,22 @@ public class HomePageController {
 		return "home";
 	}
 
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String showHomePageAgain(ModelMap model) {
+		
+		int allFace2Face = meetingDAO.countAllMeetingsForType("Face to Face");
+		int allVidConf = meetingDAO.countAllMeetingsForType("Video Conf");
+		int allVoiceConf = meetingDAO.countAllMeetingsForType("Voice Conf");
+		int total = allFace2Face + allVidConf + allVoiceConf;
+				
+		model.addAttribute("allFace2Face", allFace2Face);
+		model.addAttribute("allVidConf", allVidConf);
+		model.addAttribute("allVoiceConf", allVoiceConf);
+		model.addAttribute("total", total);
+		
+		return "home";
+	}
+	
+	
 }
