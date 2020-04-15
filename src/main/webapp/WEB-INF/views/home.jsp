@@ -60,7 +60,7 @@
       </div>
     </section><!-- #about -->
 
-    <section id="meeting-stats" class="wow fadeIn">
+    <section id="meeting-stats" class="meeting-stats wow fadeIn">
       <div class="container">
         <header class="section-header">
           <h3>Meetings Managed by MeetApp</h3>

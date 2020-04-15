@@ -94,11 +94,16 @@ formcontrol{
 	background: url(../img/intro-bg2.png) center top no-repeat;
 }
 
-#meeting-stats .counters {
+#meeting-stats-clear {
+	color: #FFFFFF;
+}
+
+
+.meeting-stats .counters {
     padding-top: 10px;
 }
 
-#meeting-stats .counters span {
+.meeting-stats .counters span {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 48px;

@@ -66,7 +66,7 @@
 		</tbody>
 	</table>
 	
-	<div id="meeting-stats" class="wow fadeIn">
+	<div id="meeting-stats-clear" class="meeting-stats wow fadeIn">
         
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
