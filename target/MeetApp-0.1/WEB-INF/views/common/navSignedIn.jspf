@@ -9,28 +9,28 @@
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li><a href="/MeetApp/welcome">Home</a></li>
+          <li><a href="welcome">Home</a></li>
           <li class="drop-down"><a href="#" onclick="return false">Meetings</a>
             <ul>
-	            <li><a href="/MeetApp/newMeeting">Add</a></li>
-                <li><a href="/MeetApp/meetingList">Update/Delete</a></li>
+	            <li><a href="newMeeting">Add</a></li>
+                <li><a href="meetingList">Update/Delete</a></li>
             </ul>
 			</li>
 			
 			
           <li class="drop-down"><a href="#" onclick="return false">Contacts</a>
             <ul>
-	            <li><a href="/MeetApp/newContact">Add</a></li>
-                <li><a href="/MeetApp/contactList">Update/Delete</a></li>
+	            <li><a href="newContact">Add</a></li>
+                <li><a href="contactList">Update/Delete</a></li>
             </ul>
 			</li>
 				<li class="drop-down"><a href="#" onclick="return false">Companies</a>
             <ul>
-	            <li><a href="/MeetApp/newCompany">Add</a></li>
-                <li><a href="/MeetApp/companyList">Update/Delete</a></li>
+	            <li><a href="newCompany">Add</a></li>
+                <li><a href="companyList">Update/Delete</a></li>
             </ul>
           </li>
-          <li><a href="/MeetApp/logout/">Logout</a></li>
+          <li><a href="logout">Logout</a></li>
         </ul>
       </nav>
     </div>

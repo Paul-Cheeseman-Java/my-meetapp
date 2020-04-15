@@ -2,18 +2,6 @@
 	To override some of the main themes css with my own preferences
 */
 
-/*
-.bootstrap-datetimepicker-widget table th.picker-switch{
-    color:#ff0000 !important;
-    font-size: 0.8em;
-}
-
-.bootstrap-datetimepicker-widget table th{
-  color:#ff0000 !important;;
-  font-size: 0.8em;
-}
-*/
-
 
 .btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle{
 	background: #fff;
@@ -27,6 +15,10 @@
     background-size: cover;
     padding: 15px 0 120px 0;
 }
+
+
+
+
 
 #welcomeHeader{
 	padding-top:0.75em;
@@ -56,6 +48,7 @@ textarea{
 
 .formErrorMsg {
 	color: #ff0000;
+	text-align: center;
 }
 
 #companyDropdownList{
@@ -98,13 +91,19 @@ formcontrol{
 
 #meeting-stats {
 	color: #FFFFFF;
+	background: url(../img/intro-bg2.png) center top no-repeat;
 }
 
-#meeting-stats .counters {
+#meeting-stats-clear {
+	color: #FFFFFF;
+}
+
+
+.meeting-stats .counters {
     padding-top: 10px;
 }
 
-#meeting-stats .counters span {
+.meeting-stats .counters span {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 48px;

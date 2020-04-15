@@ -24,6 +24,7 @@ com\meetapp\meetings\dao\MeetingDAOImpl$2.class
 com\meetapp\company\model\Company.class
 com\meetapp\company\dao\CompanyDAOImpl$2.class
 com\meetapp\contacts\controller\ContactController.class
+com\meetapp\meetings\dao\MeetingDAOImpl$11.class
 com\meetapp\login\RegisterController.class
 com\meetapp\appuser\dao\AppUserDAOImpl.class
 com\meetapp\meetings\dao\MeetingDAOImpl$9.class

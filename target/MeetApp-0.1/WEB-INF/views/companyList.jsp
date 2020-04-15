@@ -13,9 +13,7 @@
   			Company List
   		</div>
 	<div class=generalText>
-		When delete is red, it means that it still has contacts and/or meetings associated with it. Deleting the company now will remove
-		all contacts and/or meetings associated with that company. When delete is green it means there are
-		no associated records. 
+		When delete is red it means that the company still has contacts (and maybe meetings) associated with it, deleting the company will remove all contacts (and meetings) associated with that company. When delete is green it means there are no associated records so only the company will be deleted. 
 	</div>		
 	<table class="table table-striped">
 		<thead>
@@ -33,7 +31,7 @@
 					<td>${company.name}</td>
 					<td>${company.companyTypeStr}</td>
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-warning"	href="/MeetApp/editCompany?id=${company.id}">Edit</a> 
+						<a type="button" class="btn btn-light"	href="editCompany?id=${company.id}">Edit</a> 
 						<c:forEach  items="${companiesUsed}" var="usedComp">
   							<c:if test="${usedComp eq company.name}">
     							<c:set var="contains" value="true" />
@@ -41,10 +39,10 @@
 						</c:forEach>
 						<c:choose>
 							<c:when test="${contains eq true}">
-								<a type="button"class="btn btn-danger" href="/MeetApp/deleteCompany?id=${company.id}">Delete</a>
+								<a type="button"class="btn btn-danger" href="deleteCompany?id=${company.id}">Delete</a>
    							</c:when>
         					<c:otherwise>
-								<a type="button"class="btn btn-success" href="/MeetApp/deleteCompany?id=${company.id}">Delete</a>
+								<a type="button"class="btn btn-success" href="deleteCompany?id=${company.id}">Delete</a>
         					</c:otherwise>
    						</c:choose>
 
@@ -54,7 +52,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a type="button" class="btn btn-success" href="/MeetApp/newCompany">Add</a>
+		<a type="button" class="btn btn-light" href="newCompany">Add</a>
 	</div>
 
   	</div>
