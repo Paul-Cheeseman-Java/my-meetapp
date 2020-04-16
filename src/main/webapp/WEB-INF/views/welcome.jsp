@@ -6,7 +6,7 @@
   <section>
     <div class="container">
 
-		<h1>Welcome ${name}</h1> 
+		<h2>Welcome ${name}</h2> 
     </div>
 
   </section>
@@ -59,7 +59,7 @@
 					<td>${meeting.company_name}</td>
 					<td>${meeting.location}</td>
 					<td class="d-none d-md-table-cell">
-						<a type="button" class="btn btn-light"	href="editMeeting?id=${meeting.id}">Details</a> 
+						<a class="btn btn-light"	href="editMeeting?id=${meeting.id}">Details</a> 
 					</td>
 					</tr>
 			</c:forEach>

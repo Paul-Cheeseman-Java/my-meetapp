@@ -23,7 +23,7 @@
 				</tr>
 			</c:forEach>
     	<div class="form">
-            <form:form method="post" role="form" commandName="company">
+            <form:form method="post" commandName="company">
             	<div class="form-row">
                 	<div class="form-group col-md-6">
                     	<form:label path="name" for="name">Name:</form:label>

@@ -5,7 +5,7 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src=<c:url value="/resources/img/intro-img.svg"/> alt="" class="img-fluid">
+        <img src=<c:url value="/resources/img/intro-img.svg"/> alt="Meetings on a board" class="img-fluid">
       </div>
 
       <div class="intro-info">
@@ -52,7 +52,7 @@
           </div>
 
           <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <img src=<c:url value="/resources/img/about-extra-2.svg"/> class="img-fluid" alt="">
+            <img src=<c:url value="/resources/img/about-extra-2.svg"/> class="img-fluid" alt="Meetings being made">
           </div>
         </div>
 

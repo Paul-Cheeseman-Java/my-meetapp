@@ -16,7 +16,7 @@
 	<div class="form">
 	        
 
-            <form:form method="post" role="form" commandName="meeting">
+            <form:form method="post" commandName="meeting">
 				<c:if test="${meetingError ne null}">
 					<div class="formErrorMsg"> ${meetingError}</div>
 				</c:if>

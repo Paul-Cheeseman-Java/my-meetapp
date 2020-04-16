@@ -8,7 +8,7 @@
   	<div class="container">
   		<div class="title">
   			<!-- ${title}  -->
-  			<h1>Login</h1>
+  			<h2>Login</h2>
   		</div>
   		
 	   	<div class="form text-center">
@@ -18,7 +18,7 @@
    					<input type="text" id="username" name="username"/>
        			</div>
        			<div class="form-group">
-            		<label for="lastName">Password:</label>
+            		<label>Password:</label>
    					<input type="password" id="password" name="password"/>
        				<c:if test="${param.error != null}">
     					<div class="formErrorMsg">
