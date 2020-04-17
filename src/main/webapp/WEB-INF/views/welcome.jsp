@@ -16,7 +16,29 @@
         	<h5 id="welcomeHeader">Welcome ${name}</h5> 
           <h3 id="welcomeTitle">Your Meeting Schedule</h3>
         </header>
+	<div id="meeting-stats-clear" class="meeting-stats wow fadeIn">
         
+        <div class="row counters">
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">${face2FaceMeetings}</span>
+            <p>Face to Face</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">${vidConfMeetings}</span>
+            <p>Video Conferences</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">${voiceConfMeetings}</span>
+            <p>Voice Conferences</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">${face2FaceMeetings+vidConfMeetings+voiceConfMeetings}</span>
+            <p>Total</p>
+          </div>
+        </div>
+      </div>        
         <div class="dropdown show">
   			<a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Schedule Range</a>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -64,29 +86,7 @@
 		</tbody>
 	</table>
 	
-	<div id="meeting-stats-clear" class="meeting-stats wow fadeIn">
-        
-        <div class="row counters">
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">${face2FaceMeetings}</span>
-            <p>Face to Face</p>
-          </div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">${vidConfMeetings}</span>
-            <p>Video Conferences</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">${voiceConfMeetings}</span>
-            <p>Voice Conferences</p>
-          </div>
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">${face2FaceMeetings+vidConfMeetings+voiceConfMeetings}</span>
-            <p>Total</p>
-          </div>
-        </div>
-      </div>
 	</div>
     </section>
   </main>
