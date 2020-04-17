@@ -31,8 +31,10 @@
 }
 
 .table thead th{
-	color: #ffffff;
+	color: #006fe6;
+	background-color: #ffffff;
 }
+
 
 textarea{
 	 max-width:100%; 

@@ -13,7 +13,10 @@ INSERT INTO company (`id`, `name`, `company_type`, `username`)
 		   (2, 'Tech Firm #2', 1, 'Test'), 
            (3, 'Food Firm #1', 2, 'Test'),
 		   (4, 'Food Firm #2', 2, 'Test'), 
-		   (5, 'Bank #1', 3, 'Test');
+		   (5, 'Bank #1', 3, 'Test'),
+		   (6, 'Bank #2', 3, 'Test');
+           
+           
 
 INSERT INTO contact (`id`, `first_name`, `last_name`, `email`, `company_id`, `phone`, `username`) 
 	VALUES (1, 'Tom', 'Test', 'TomTest@email.com', 1, '12345678901', 'Test'), 

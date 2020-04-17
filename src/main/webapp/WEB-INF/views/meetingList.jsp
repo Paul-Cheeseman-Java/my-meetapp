@@ -38,7 +38,7 @@
 					<td>${meeting.company_name}</td>
 					<td>${meeting.location}</td>
 					<td><a class="btn btn-light" href="editMeeting?id=${meeting.id}">Edit</a> 
-						<a class="btn btn-success" href="deleteMeeting?id=${meeting.id}">Delete</a></td>
+						<a class="btn btn-warning" href="deleteMeeting?id=${meeting.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

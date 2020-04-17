@@ -13,7 +13,7 @@
   			Company List
   		</div>
 	<div class=generalText>
-		When delete is red it means that the company still has contacts (and maybe meetings) associated with it, deleting the company will remove all contacts (and meetings) associated with that company. When delete is green it means there are no associated records so only the company will be deleted. 
+		When delete is red it means that the company still has contacts (and maybe meetings) associated with it, deleting the company will remove all contacts (and meetings) associated with that company. When delete is orange it means there are no associated records so only the company will be deleted. 
 	</div>		
 	<table class="table table-striped">
 		<thead>
@@ -42,7 +42,7 @@
 								<a class="btn btn-danger" href="deleteCompany?id=${company.id}">Delete</a>
    							</c:when>
         					<c:otherwise>
-								<a class="btn btn-success" href="deleteCompany?id=${company.id}">Delete</a>
+								<a class="btn btn-warning" href="deleteCompany?id=${company.id}">Delete</a>
         					</c:otherwise>
    						</c:choose>
 
@@ -52,7 +52,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a class="btn btn-light" href="newCompany">Add</a>
+		<a class="btn btn-success" href="newCompany">Add</a>
 	</div>
 
   	</div>

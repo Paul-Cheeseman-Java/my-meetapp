@@ -14,7 +14,7 @@
   			Contact List 
   		</div>
 	<div class=generalText>
-		When delete is red it means that the contact still has meetings associated with it, deleting the contact will remove all associated meetings. When delete is green it means there are no associated meetings so only the contact will be deleted. 
+		When delete is red it means that the contact still has meetings associated with it, deleting the contact will remove all associated meetings. When delete is orange it means there are no associated meetings so only the contact will be deleted. 
 	</div>		
 	<table class="table table-striped">
 		<thead>
@@ -50,7 +50,7 @@
 								<a class="btn btn-danger" href="deleteContact?id=${contact.id}">Delete</a>
 							</c:when>
        						<c:otherwise>
-								<a class="btn btn-success" href="deleteContact?id=${contact.id}">Delete</a>
+								<a class="btn btn-warning" href="deleteContact?id=${contact.id}">Delete</a>
        						</c:otherwise>
 						</c:choose>
 						
@@ -60,7 +60,7 @@
 		</tbody>
 	</table>
   	<div class="d-none d-md-table-cell">
-		<a class="btn btn-light" href="newContact">Add</a>
+		<a class="btn btn-success" href="newContact">Add</a>
 	</div>
   	</div>
   </section>
