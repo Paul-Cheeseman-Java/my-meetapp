@@ -88,12 +88,10 @@ public class MeetingController {
 		
 		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
 			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
-			//System.out.println("In Past - reject!");
 			modelAndView.addObject("meetingError", "Meeting in the past - Rejected");
 			canAddMeeting = false;
 			
 		} else if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
-			//System.out.println("Meeting Under 15 mins - reject!");
 			modelAndView.addObject("meetingError", "Meeting under 15 mins - Rejected");
 			canAddMeeting = false;
 		
@@ -134,12 +132,9 @@ public class MeetingController {
 		}
 		
 		return modelAndView;
-		
-
 	}
 	
 
-	
 	
 	@RequestMapping(value = "/deleteMeeting", method = RequestMethod.GET)
 	public ModelAndView deleteMeeting(HttpServletRequest request) {
@@ -167,6 +162,7 @@ public class MeetingController {
 		
 		return modelAndView;
 	}
+
 	
 	@RequestMapping(value = "/editMeeting", method = RequestMethod.POST)
 	public ModelAndView updateMeeting(Model model, Meeting meeting) {

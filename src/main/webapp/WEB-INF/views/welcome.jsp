@@ -10,8 +10,6 @@
     </div>
 
   </section>
-  
-
     <section id="welcome-page">
       <div class="container">
         <header class="section-header">
@@ -83,19 +81,14 @@
             <span data-toggle="counter-up">${voiceConfMeetings}</span>
             <p>Voice Conferences</p>
           </div>
-
           <div class="col-lg-3 col-6 text-center">
             <span data-toggle="counter-up">${face2FaceMeetings+vidConfMeetings+voiceConfMeetings}</span>
             <p>Total</p>
           </div>
-  
         </div>
-
       </div>
 	</div>
-	
     </section>
-
   </main>
 
  <%@ include file="common/footer.jspf"%>

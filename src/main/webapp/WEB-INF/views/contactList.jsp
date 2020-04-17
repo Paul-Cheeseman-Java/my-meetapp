@@ -30,10 +30,6 @@
 				<tr>
 					<td>${contact.firstName}</td>
 					<td>${contact.lastName}</td>
-					<!-- 
-					<td><fmt:formatDate pattern="dd/MM/yyyy"
-							value="${todo.targetDate}" /></td>
-					-->
 					<td class="d-none d-sm-table-cell">${contact.email}</td>
 
 

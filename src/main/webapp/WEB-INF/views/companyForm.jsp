@@ -57,9 +57,6 @@
 	                	</div>
     	           	</div>
         		</div>       	
-               	
-               	
-               	
                 <div class="text-center"><button class="btn btn-light" type="submit" title="${buttontext}">${buttontext}</button></div>
             </form:form>
 		</div>

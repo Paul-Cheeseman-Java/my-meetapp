@@ -17,7 +17,7 @@
       </div>
 
     </div>
-  </section><!-- #intro -->
+  </section>
 
 
   <main id="main">
@@ -58,7 +58,7 @@
 
 
       </div>
-    </section><!-- #about -->
+    </section>
 
     <section id="meeting-stats" class="meeting-stats wow fadeIn">
       <div class="container">

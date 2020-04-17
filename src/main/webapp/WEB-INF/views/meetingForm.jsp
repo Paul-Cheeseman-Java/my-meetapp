@@ -135,10 +135,7 @@
 				</div>           
                
                 <div class="text-center"><button class="btn btn-light <c:if test="${(empty companiesList || empty contactsList)}">disabled</c:if>" type="submit" title="${buttontext}">${buttontext}</button></div>
-               
             </form:form>		
-
-
 		</div>
   	</div>
   </section>

@@ -65,12 +65,6 @@ public class ContactController {
 		else {
 			contactDAO.insertContact(contact, principal.getName());
 			ModelAndView modelAndView = new ModelAndView("redirect:/contactList");
-
-			//ModelAndView modelAndView = new ModelAndView("contactList");
-			//List<Contact> allContacts = contactDAO.listContacts(principal.getName());
-			//List<String> getContactsUsed = contactDAO.getContactsUsed(principal.getName());
-			//model.addObject("contactsUsed", getContactsUsed);
-			//modelAndView.addObject("contactList", allContacts);
 			return modelAndView;			
 		}
 	}

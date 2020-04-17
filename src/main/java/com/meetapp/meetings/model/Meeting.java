@@ -162,17 +162,6 @@ public class Meeting  implements Comparable<Meeting> {
 		this.meeting_end = meeting_end;
 	}
 
-	/*
-	public void joinDateTimeMeetingStart(Date date, Time time) {
-		String inputDate = date.toString();
-		String inputDateWithSpace = inputDate.concat(" ");
-		String inputTime = time.toString();
-		String inputTimeNoMilli = inputTime.substring(0, inputTime.length() - 3);
-		String dateTime = inputDateWithSpace.concat(inputTimeNoMilli);
-		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		this.setMeeting_start(LocalDateTime.parse(dateTime, myFormatObj));
-	}
-	*/
 	
 	public static LocalDateTime joinDateTime(Date date, Time time) {
 		LocalDate localDate = date.toLocalDate();
@@ -181,47 +170,11 @@ public class Meeting  implements Comparable<Meeting> {
 		String inputDate = localDate.toString();
 		String inputDateWithSpace = inputDate.concat(" ");
 		String inputTime = localTime.toString();
-		//String inputTimeNoMilli = inputTime.substring(0, inputTime.length() - 3);
-		//String dateTime = inputDateWithSpace.concat(inputTimeNoMilli);
 		String dateTime = inputDateWithSpace.concat(inputTime);
 		
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		//System.out.println("DateTime: " + LocalDateTime.parse(dateTime, myFormatObj));
 		return LocalDateTime.parse(dateTime, myFormatObj);
 	}
 	
-	
-	/*
-	public void joinDateTimeMeetingEnd(Date date, Time time) {
-		
-	}
-	
-	
-	
-	
-	
-	public static LocalDateTime convertStringToDate(String date) {
-		//"13/03/2020, 20:14"
-		String[] part = date.split(",");
-		date = part[0]; 		
-		part = date.split(" ");
-		String time = part[1]; 
-		
-		//String str = "2016-03-04 11:30";
-		String timeDate = date.concat(time);
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		LocalDateTime dateTime = LocalDateTime.parse(timeDate, formatter);
-		return dateTime;
-		
-	}
-	
-	
-	public static String convertDatetoBlackSlash(LocalDate date) {
-		String dateStr = date.toString().replace('-','/');
-		return dateStr;
-	}
-	*/
-
 	
 }
