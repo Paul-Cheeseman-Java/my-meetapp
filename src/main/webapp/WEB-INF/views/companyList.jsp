@@ -12,7 +12,7 @@
   		<div class="title">
   			Company List
   		</div>
-	<div class=generalText>
+	<div class="generalText d-none d-md-table-cell"">
 		When delete is red it means that the company still has contacts (and maybe meetings) associated with it, deleting the company will remove all contacts (and meetings) associated with that company. When delete is orange it means there are no associated records so only the company will be deleted. 
 	</div>		
 	<table class="table table-striped">

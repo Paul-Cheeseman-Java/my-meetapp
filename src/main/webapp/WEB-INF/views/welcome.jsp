@@ -61,11 +61,11 @@
 			<tr id="whitTableHeading">
 				<th>Date</th>
 				<th>Start</th>
-				<th>End</th>
+				<th class="d-none d-md-table-cell">End</th>
 				<th>Contact</th>
-				<th>Company</th>
+				<th class="d-none d-sm-table-cell">Company</th>
 				<th>Location</th>
-				<th>Info</th>
+				<th class="d-none d-md-table-cell">Info</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -74,9 +74,9 @@
 				<tr>
 					<td><javatime:format value="${meeting.meeting_start}" pattern="dd-MM-yyyy" /></td>
 					<td><javatime:format value="${meeting.meeting_start}" pattern="HH:mm" /></td>
-					<td><javatime:format value="${meeting.meeting_end}" pattern="HH:mm" /></td>
+					<td class="d-none d-md-table-cell"><javatime:format value="${meeting.meeting_end}" pattern="HH:mm" /></td>
 					<td>${meeting.contact_firstName}&#160;${meeting.contact_lastName}</td>
-					<td>${meeting.company_name}</td>
+					<td class="d-none d-sm-table-cell">${meeting.company_name}</td>
 					<td>${meeting.location}</td>
 					<td class="d-none d-md-table-cell">
 						<a class="btn btn-light"	href="editMeeting?id=${meeting.id}">Details</a> 

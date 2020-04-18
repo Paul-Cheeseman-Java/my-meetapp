@@ -13,7 +13,7 @@
   		<div class="title">
   			Contact List 
   		</div>
-	<div class=generalText>
+	<div class="generalText d-none d-md-table-cell">
 		When delete is red it means that the contact still has meetings associated with it, deleting the contact will remove all associated meetings. When delete is orange it means there are no associated meetings so only the contact will be deleted. 
 	</div>		
 	<table class="table table-striped">
