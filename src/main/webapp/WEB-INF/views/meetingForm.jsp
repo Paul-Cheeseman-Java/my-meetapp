@@ -14,15 +14,13 @@
   		</div>
 
 	<div class="form">
-	        
-
             <form:form method="post" commandName="meeting">
 				<c:if test="${meetingError ne null}">
 					<div class="formErrorMsg"> ${meetingError}</div>
 				</c:if>
 
             	<div class="form-row">
-               		<div class="form-group col-md-3 offset-md-3 text-center">
+               		<div class="form-group  col-md-4 offset-md-2 text-center">
              			<label>Select Company:</label>
              			<c:choose>
     						<c:when test="${empty companiesList}">
@@ -40,7 +38,7 @@
                										<option selected value = "${theCompany.id}">${theCompany.name}</option>            						
             									</c:when>
             				        			<c:otherwise>
-            				            			<option value = "${theCompany.id}">${theCompany.name}</option>            						
+            				            			<option value = "${theCompany.id}">${theCompany.name}</option>	
             				        			</c:otherwise>
                 							</c:choose>
               							</c:forEach>
@@ -49,7 +47,7 @@
 					    	</c:otherwise>
 						</c:choose>
                		</div>
-      				<div class="form-group col-md-3 text-center">
+      				<div class="form-group  col-md-4 text-center">
              			<label>Select Contact:</label>
              			<c:choose>
     						<c:when test="${empty contactsList}">
@@ -79,7 +77,7 @@
 				</div>
 
              	<div class="form-row">
-                	<div class="form-group col-md-3 offset-md-3 text-center">
+                	<div class="form-group col-md-4 offset-md-2 text-center">
                 		<form:label path="meeting_start" for="meeting_start">Meeting Start: </form:label>
                 		<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
 	                    	<form:input path="meeting_start" type="text" pattern="^([1-9]|([012][0-9])|(3[01]))\/([0]{0,1}[1-9]|1[012])\/\d\d\d\d [012]{0,1}[0-9]:[0-6][0-9]$" name="meeting_start" class="form-control datetimepicker-input" id="meeting_start"  data-target="#datetimepicker1" placeholder="dd/mm/yyyy hh:mm" required="required"/>
@@ -90,7 +88,7 @@
                     		</div>
                 		</div>
       				</div>
-                	<div class="form-group col-md-3 text-center">
+                	<div class="form-group col-md-4 text-center">
                 		<form:label path="meeting_end" for="meeting_end">Meeting End: </form:label>
                 		<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
 	                    	<form:input path="meeting_end" type="text" pattern="^([1-9]|([012][0-9])|(3[01]))\/([0]{0,1}[1-9]|1[012])\/\d\d\d\d [012]{0,1}[0-9]:[0-6][0-9]$" name="meeting_end" class="form-control datetimepicker-input" id="meeting_end"  data-target="#datetimepicker2" placeholder="dd/mm/yyyy hh:mm" required="required"/>
@@ -103,8 +101,8 @@
       				</div>
 				</div>
             	<div class="form-row">
-                	<div class="form-group col-md-3 offset-md-3 text-center">
-             			<label>Select Type:</label>
+					<div class="form-group  col-md-4 offset-md-2 text-center">
+             			<label>Select Company Type:</label>
 						<form:select id = "meetingTypeDropdownList" path="meeting_type" class="selectpicker">
 							<c:forEach items="${meetingTypesList}" var="theMeetingType">
 								<!-- Setting the company to correct value on dropdown -->
@@ -121,14 +119,14 @@
            					</c:forEach>
            				</form:select>       					
                 	</div>
-                	<div class="form-group col-md-3 text-center">
+                	<div class="form-group col-md-4 text-center">
              			<label>Location:</label>
                     	<form:input class="form-control" path="location" type="text" placeholder="None" value="None"/>
                 	</div>
 				</div>
                
               	<div class="form-row">
-              		<div class="form-group col-md-6 offset-md-3">
+              		<div class="form-group col-md-6 offset-md-3 text-center">
              			<label>Notes:</label>
                 		<form:textarea class="form-control" path="notes"	cols="120"/>
      				</div>

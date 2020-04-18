@@ -13,7 +13,6 @@
   			${title}
   		</div>
 
-
     	<div class="form">
         	<div id="errormessage"></div>
             <form:form method="post" commandName="contact">

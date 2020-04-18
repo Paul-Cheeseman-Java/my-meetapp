@@ -12,20 +12,11 @@
   		<div class="title">
   			${title}
   		</div>
-			<c:forEach items="${companyList}" var="company">
-				<tr>
-					<td>${company.name}</td>
-					<td>${company.companyType}</td>
-					<td class="d-none d-md-table-cell"><a type="button" class="btn btn-warning"
-						href="/update-company?id=${company.id}">Edit</a> <a type="button"
-						class="btn btn-danger" href="/delete-company?id=${company.id}">Delete</a>
-					</td>
-				</tr>
-			</c:forEach>
+
     	<div class="form">
             <form:form method="post" commandName="company">
             	<div class="form-row">
-                	<div class="form-group col-md-6">
+                	<div class="form-group offset-md-3 col-md-6">
                     	<form:label path="name" for="name">Name:</form:label>
                     	<form:input path="name" type="text" name="name" class="form-control" id="name" placeholder="Company Name" pattern=".{4,25}" required="required" title="4 to 25 characters"/>
     					<c:if test="${duplicateCompany == true}">
@@ -35,9 +26,9 @@
                   	</div>
                 </div>
                 <div class="form-row">
-                	<div class="form-group col-md-4">
+                	<div class="form-group offset-md-4 col-md-4">
+           				<form:label path="companyType">Company Type:</form:label>
            				<form:select id = "companyTypeList" path="companyType" class="selectpicker">
-           				<form:label path="name" for="name">Name:</form:label>
            				<c:forEach items="${companyTypesList}" var="theCompanyType">
 												
 								<!-- Setting the company to correct value on dropdown -->
