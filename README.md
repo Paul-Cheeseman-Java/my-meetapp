@@ -8,6 +8,8 @@ The site can be found on Heroku at https://evening-spire-29762.herokuapp.com/
 
 A dummy account is setup (with both username/pw as Test) which has associated data loaded to enable the sites functionality to seen without the need for any data entry. 
 
+Please be aware that as part of the responsive design in smaller view sizes update & delete options are omitted to provide the most effective layout within the limited space.
+
 ##### Features
 * The site is themed and device responsive.
 * The site has functionality which shows users when it is safe to delete contacts and companies.
@@ -19,7 +21,8 @@ A dummy account is setup (with both username/pw as Test) which has associated da
 ##### Technologies
 Project is created with:
 * Java
-* Spring (MVC)
+* Java Spring (MVC)
+* Java JSP
 * MySQL
 * Bootstrap
 * HTML/CSS
