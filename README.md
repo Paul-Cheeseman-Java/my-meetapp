@@ -3,8 +3,7 @@
 ##### General info
 This project a basic meeting management application which allows users to track/manage meetings (over 15 minutes) with contacts from different companies. It's been written using Java Spring (MVC), Bootstrap, CSS and MySQL, and it was developed to help me understand some of the fundamentals in developing and deploying a Spring MVC application.  
 
-The site can be found on Heroku at https://evening-spire-29762.herokuapp.com/ 
-*As it is on the free tier it can be slow on occasion.*
+The site can be found on Heroku at https://demo-meetapp.herokuapp.com 
 
 A dummy account is setup (with both username/pw as Test) which has associated data loaded to enable the sites functionality to seen without the need for any data entry. 
 
