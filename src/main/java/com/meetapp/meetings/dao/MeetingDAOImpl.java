@@ -262,7 +262,7 @@ public class MeetingDAOImpl implements MeetingDAO {
 			}
 		});
 		//Collections.reverse(listMeeting);
-		Collections.reverse(listMeeting);
+		Collections.sort(listMeeting);
 		return listMeeting;
 	}
 
@@ -289,7 +289,7 @@ public class MeetingDAOImpl implements MeetingDAO {
 			}
 		});
 		//Collections.reverse(listMeeting);
-		Collections.reverse(listMeeting);
+		Collections.sort(listMeeting);
 		return listMeeting;
 	}
 
