@@ -24,11 +24,25 @@ public class Meeting  implements Comparable<Meeting> {
 	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_end;	
 
 	
-	//Sort date/time so most recent meeting is at top 
+	//Sort date/time so date is descending and time ascending within a given date range
+	//That will mean most recent day entries at top and those entries ordered with soonest meeting first
 	public int compareTo(Meeting meeting) {
-        LocalDateTime dateTime1 = this.meeting_start;
-        LocalDateTime dateTime2 = meeting.meeting_start;
-        return dateTime2.compareTo(dateTime1);
+        //LocalDateTime dateTime1 = this.meeting_start;
+        //LocalDateTime dateTime2 = meeting.meeting_start;
+        int compRes;
+        
+        LocalDate date1 = this.meeting_start.toLocalDate();
+        LocalDate date2 = meeting.meeting_start.toLocalDate();
+        
+        LocalTime time1 = this.meeting_start.toLocalTime();
+        LocalTime time2 = meeting.meeting_start.toLocalTime();        
+
+        compRes = date2.compareTo(date1);
+        if (compRes == 0) {
+        	compRes = time1.compareTo(time2);
+        }
+        
+        return compRes;
 	}
 	
 	
