@@ -1,5 +1,6 @@
 package com.meetapp.login;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -101,6 +102,7 @@ public class LoginController {
 		
 		Meeting meeting = new Meeting();
 		
+	
 		model.addAttribute("face2FaceMeetings", face2FaceMeetings.size());
 		model.addAttribute("vidConfMeetings", vidConfMeetings.size());
 		model.addAttribute("voiceConfMeetings", voiceConfMeetings.size());

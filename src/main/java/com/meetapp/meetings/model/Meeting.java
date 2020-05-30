@@ -28,7 +28,7 @@ public class Meeting  implements Comparable<Meeting> {
 	public int compareTo(Meeting meeting) {
         LocalDateTime dateTime1 = this.meeting_start;
         LocalDateTime dateTime2 = meeting.meeting_start;
-        return dateTime1.compareTo(dateTime2);
+        return dateTime2.compareTo(dateTime1);
 	}
 	
 	
