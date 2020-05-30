@@ -166,8 +166,10 @@ public class MeetingController {
 	
 
 	@RequestMapping(value = "/editMeeting", method = RequestMethod.POST)
-	public ModelAndView submitMeeting(Meeting meeting, ModelAndView modelAndView, Principal principal, HttpServletRequest request)
+	public ModelAndView editMeeting(Meeting meeting, Principal principal, HttpServletRequest request)
 	{
+		
+		ModelAndView modelAndView = new ModelAndView("meetingForm");
 		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
 		List<Contact> currentContactsList = contactDAO.listContacts(principal.getName());
 		List<Meeting> currentMeetingsList = meetingDAO.listMeetings(principal.getName());
