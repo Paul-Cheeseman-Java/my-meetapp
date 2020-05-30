@@ -50,7 +50,7 @@
     			<div class="dropdown-divider"></div>
     			<a class="dropdown-item" href="welcome?id=-1">Yesterday</a>
     			<a class="dropdown-item" href="welcome?id=-5">Last 5 Days</a>
-    			<a class="dropdown-item" href="welcome?id=-5">All Previous</a>
+    			<a class="dropdown-item" href="welcome?id=-10">All Previous</a>
     			<div class="dropdown-divider"></div>
     			<a class="dropdown-item" href="welcome?id=0">All</a>
   			</div>
