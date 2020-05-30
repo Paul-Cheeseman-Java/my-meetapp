@@ -175,8 +175,8 @@ public class MeetingController {
 		List<Meeting> currentMeetingsList = meetingDAO.listMeetings(principal.getName());
 		List<MeetingType> meetingTypesList = meetingDAO.listMeetingTypes();
 		
-		modelAndView.addObject("title", "New Meeting");
-		modelAndView.addObject("buttontext", "Create Meeting");
+		modelAndView.addObject("title", "Existing Meeting");
+		modelAndView.addObject("buttontext", "Update Meeting");
 		modelAndView.addObject("companiesList", currentCompaniesList);
 		modelAndView.addObject("contactsList", currentContactsList);
 		modelAndView.addObject("meetingTypesList", meetingTypesList);
@@ -216,8 +216,7 @@ public class MeetingController {
 			}
 		} 
 		if (canAddMeeting){
-			meetingDAO.insertMeeting(meeting, principal.getName());
-		
+			meetingDAO.updateMeeting(meeting);
 			modelAndView = new ModelAndView("meetingList");
 			List<Meeting> allmeetings = meetingDAO.listMeetings(principal.getName());
 			for (Meeting aMeeting: allmeetings) {
