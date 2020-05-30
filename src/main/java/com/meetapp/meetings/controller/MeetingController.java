@@ -164,9 +164,70 @@ public class MeetingController {
 	}
 
 	
+
 	@RequestMapping(value = "/editMeeting", method = RequestMethod.POST)
-	public ModelAndView updateMeeting(Model model, Meeting meeting) {
-		meetingDAO.updateMeeting(meeting);
-		return new ModelAndView("redirect:/meetingList");
+	public ModelAndView submitMeeting(Meeting meeting, ModelAndView modelAndView, Principal principal, HttpServletRequest request)
+	{
+		List<Company> currentCompaniesList = companyDAO.listCompanies(principal.getName());
+		List<Contact> currentContactsList = contactDAO.listContacts(principal.getName());
+		List<Meeting> currentMeetingsList = meetingDAO.listMeetings(principal.getName());
+		List<MeetingType> meetingTypesList = meetingDAO.listMeetingTypes();
+		
+		modelAndView.addObject("title", "New Meeting");
+		modelAndView.addObject("buttontext", "Create Meeting");
+		modelAndView.addObject("companiesList", currentCompaniesList);
+		modelAndView.addObject("contactsList", currentContactsList);
+		modelAndView.addObject("meetingTypesList", meetingTypesList);
+
+		boolean canAddMeeting = true;
+		
+		if (meeting.getMeeting_start().isBefore(submitDateTime)) {
+			//Not perfect, because if form is left for a while then a past date can be put in, but the error window is small
+			modelAndView.addObject("meetingError", "Meeting in the past - Rejected");
+			canAddMeeting = false;
+			
+		} else if (meeting.getMeeting_end().isBefore(meeting.getMeeting_start().plusMinutes(15))){
+			modelAndView.addObject("meetingError", "Meeting under 15 mins - Rejected");
+			canAddMeeting = false;
+		
+		} else if (meeting.getMeeting_end().isAfter(meeting.getMeeting_start().plusHours(12))){
+			modelAndView.addObject("meetingError", "Meetings of 12 hours or over not permitted - Rejected");
+			canAddMeeting = false;
+			
+		} else {
+			
+			for (Meeting existingMeeting : currentMeetingsList) {
+				if (
+					//Is requested meeting start between start and end time of existing meeting?
+					(meeting.getMeeting_start().isAfter(existingMeeting.getMeeting_start()) &&
+				     meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_end())) ||
+					//OR requested meeting end between start and end time of existing meeting?				   					
+					(meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_start()) &&
+				     meeting.getMeeting_end().isBefore(existingMeeting.getMeeting_end())) ||
+					//OR requested meeting over-arching the existing meeting?				   					
+					(meeting.getMeeting_start().isBefore(existingMeeting.getMeeting_start()) &&
+					 meeting.getMeeting_end().isAfter(existingMeeting.getMeeting_end()))) {
+
+					canAddMeeting = false;
+					modelAndView.addObject("meetingError", "Meeting already booked at that time range - Rejected");
+				}
+			}
+		} 
+		if (canAddMeeting){
+			meetingDAO.insertMeeting(meeting, principal.getName());
+		
+			modelAndView = new ModelAndView("meetingList");
+			List<Meeting> allmeetings = meetingDAO.listMeetings(principal.getName());
+			for (Meeting aMeeting: allmeetings) {
+				aMeeting.setCompany_name(companyDAO.getCompany(aMeeting.getCompany_id()).getName());
+				aMeeting.setContact_firstName(contactDAO.getContact(aMeeting.getContact_id()).getFirstName());
+				aMeeting.setContact_lastName(contactDAO.getContact(aMeeting.getContact_id()).getLastName());
+			}
+			modelAndView.addObject("meetingList", allmeetings);
+		}
+		
+		return modelAndView;
 	}
+	
+	
 }
