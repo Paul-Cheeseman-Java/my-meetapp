@@ -37,7 +37,7 @@ public class Meeting  implements Comparable<Meeting> {
         LocalTime time1 = this.meeting_start.toLocalTime();
         LocalTime time2 = meeting.meeting_start.toLocalTime();        
 
-        compRes = date2.compareTo(date1);
+        compRes = date1.compareTo(date2);
         if (compRes == 0) {
         	compRes = time1.compareTo(time2);
         }
