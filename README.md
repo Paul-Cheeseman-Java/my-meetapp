@@ -7,7 +7,9 @@ The site can be found on Heroku at https://demo-meetapp.herokuapp.com
 
 A dummy account is setup (with both username/pw as Test) which has associated data loaded to enable the sites functionality to seen without the need for any data entry. 
 
-Please be aware that as part of the responsive design in smaller view sizes update & delete options are omitted to provide the most effective layout within the limited space.
+Once logged in, the displayed meeting schedule can be altered using the 'Schedule Range' dropdown button. Also a user can add new (or remove) companies, contacts and meetings.
+
+Please be aware that the site may be slow to start and respond due to the hosting plan it is on.
 
 ##### Features
 * The site is themed and device responsive.
