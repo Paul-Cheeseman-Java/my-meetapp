@@ -34,6 +34,8 @@ public interface MeetingDAO {
 	
 	public List<Meeting> listPastMeetings(String username, int range, int meetype);
 
+	public List<Meeting> listAllPastMeetingsByMeetingType(String username, int meetingType);
+	
 	public int countAllMeetingsForType(String meetingType);
 	
 }

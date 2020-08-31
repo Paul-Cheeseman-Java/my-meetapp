@@ -81,9 +81,10 @@ public class LoginController {
 		else if (range == -10) {
 			meetingList = meetingDAO.listPastMeetings(getLoggedInUserName());
 			//Not happy with hardcoded values.........
-			face2FaceMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), 1);
-			vidConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), 2);
-			voiceConfMeetings = meetingDAO.listPastMeetings(getLoggedInUserName(), 3);
+			face2FaceMeetings = meetingDAO.listAllPastMeetingsByMeetingType(getLoggedInUserName(), 1);
+			vidConfMeetings = meetingDAO.listAllPastMeetingsByMeetingType(getLoggedInUserName(), 2);
+			voiceConfMeetings = meetingDAO.listAllPastMeetingsByMeetingType(getLoggedInUserName(), 3);
+			
 		}
 		
 		else {
