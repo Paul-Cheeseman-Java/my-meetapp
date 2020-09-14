@@ -26,8 +26,8 @@
                   	</div>
                 </div>
                 <div class="form-row">
-                	<div class="form-group offset-md-4 col-md-4">
-           				<form:label path="companyType">Company Type:</form:label>
+                	<div class="form-group offset-md-3 col-md-6">
+           				<form:label path="companyType">Company Type:</form:label></br>
            				<form:select id = "companyTypeList" path="companyType" class="selectpicker">
            				<c:forEach items="${companyTypesList}" var="theCompanyType">
 												
