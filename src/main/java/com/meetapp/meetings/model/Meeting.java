@@ -188,11 +188,11 @@ public class Meeting  implements Comparable<Meeting> {
 		
 		//Daylight saving hack
 		//if date before 25/10/20 do below, else don't
+		LocalDate DSTSwitch = LocalDate.of(2020, 10, 25);
 		LocalTime localTime = time.toLocalTime();
-		//LocalDate DLSSwitch = LocalDate.of(2020, 10, 25);
-		//if (localDate.isBefore(DLSSwitch)) {
-		//	localTime = time.toLocalTime().minusHours(1);			
-		//}
+		if (localDate.isAfter(DSTSwitch)) {
+			localTime = time.toLocalTime().minusHours(1);			
+		}
 		
 		//Use below when non-daylight saving 
 		//LocalTime localTime = time.toLocalTime();
