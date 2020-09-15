@@ -1,11 +1,14 @@
 package com.meetapp.meetings.model;
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Meeting  implements Comparable<Meeting> {
@@ -20,9 +23,11 @@ public class Meeting  implements Comparable<Meeting> {
 	private int meeting_type;
 	private String notes;
 	
-	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_start;
-	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_end;	
+	//@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_start;
+	//@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_end;	
 
+	private LocalDateTime meeting_start;
+	private LocalDateTime meeting_end;	
 	
 	//Sort date/time so date is descending and time ascending within a given date range
 	//That will mean most recent day entries at top and those entries ordered with soonest meeting first
@@ -178,15 +183,29 @@ public class Meeting  implements Comparable<Meeting> {
 
 	
 	public static LocalDateTime joinDateTime(Date date, Time time) {
-		LocalDate localDate = date.toLocalDate();
-		LocalTime localTime = time.toLocalTime();
 		
+		System.out.println("Initial inputTime : " +time);
+		
+		LocalDate localDate = date.toLocalDate();
+		//Daylight saving hack
+		LocalTime localTime = time.toLocalTime().minusHours(1);
+		//Use below when non-daylight saving 
+		//LocalTime localTime = time.toLocalTime();
 		String inputDate = localDate.toString();
 		String inputDateWithSpace = inputDate.concat(" ");
 		String inputTime = localTime.toString();
 		String dateTime = inputDateWithSpace.concat(inputTime);
+
+		System.out.println("Change to LocalTime: " +inputTime);
 		
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		
+		
+				
+		System.out.println("Returned Date: " +LocalDateTime.parse(dateTime, myFormatObj).toString());
+		
+		
+		
 		return LocalDateTime.parse(dateTime, myFormatObj);
 	}
 	
