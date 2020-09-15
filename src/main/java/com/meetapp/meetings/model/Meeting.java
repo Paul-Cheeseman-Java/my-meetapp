@@ -184,8 +184,16 @@ public class Meeting  implements Comparable<Meeting> {
 		System.out.println("Initial inputTime : " +time);
 		
 		LocalDate localDate = date.toLocalDate();
+
+		
 		//Daylight saving hack
-		LocalTime localTime = time.toLocalTime().minusHours(1);
+		//if date before 25/10/20 do below, else don't
+		LocalTime localTime = time.toLocalTime();
+		LocalDate DSTSwitch = LocalDate.of(2020, 10, 25);
+		if (localDate.isBefore(DSTSwitch)) {
+			localTime = time.toLocalTime().minusHours(1);			
+		}
+		
 		//Use below when non-daylight saving 
 		//LocalTime localTime = time.toLocalTime();
 		String inputDate = localDate.toString();
