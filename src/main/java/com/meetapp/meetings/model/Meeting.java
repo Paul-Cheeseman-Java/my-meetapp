@@ -23,11 +23,8 @@ public class Meeting  implements Comparable<Meeting> {
 	private int meeting_type;
 	private String notes;
 	
-	//@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_start;
-	//@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_end;	
-
-	private LocalDateTime meeting_start;
-	private LocalDateTime meeting_end;	
+	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_start;
+	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm") private LocalDateTime meeting_end;	
 	
 	//Sort date/time so date is descending and time ascending within a given date range
 	//That will mean most recent day entries at top and those entries ordered with soonest meeting first
