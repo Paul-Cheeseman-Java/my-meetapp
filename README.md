@@ -1,7 +1,7 @@
 # MEETAPP
 
 ##### General info
-This project a basic meeting management application which allows users to track/manage meetings (over 15 minutes) with contacts from different companies. It's been written using Java Spring (MVC), Bootstrap, CSS and MySQL, and it was developed to help me understand some of the fundamentals in developing and deploying a Spring MVC application.  
+This project is a basic meeting management application which allows users to track/manage meetings (of over 15 minutes) with contacts from different companies. It's been written using Java Spring (MVC), Bootstrap, CSS and MySQL, and it was developed to help me understand some of the fundamentals in developing and deploying a Spring MVC application.  
 
 The site can be found on Heroku at https://demo-meetapp.herokuapp.com 
 
